@@ -6,7 +6,7 @@ import 'package:{{project_name}}/features/{{name.snakeCase()}}/data/providers/{{
 
 part '{{name.snakeCase()}}_repository_impl_provider.g.dart';
 
-@Riverpod(keepAlive: true)
+@riverpod
 {{name.pascalCase()}}RepositoryImpl {{name.camelCase()}}RepositoryImpl(
   {{name.pascalCase()}}RepositoryImplRef ref,
 ) {

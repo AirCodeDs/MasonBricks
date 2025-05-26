@@ -5,7 +5,7 @@ import 'package:{{project_name}}/services/api/api_client/api_client.dart';
 
 part '{{name.snakeCase()}}_remote_data_source_provider.g.dart';
 
-@Riverpod(keepAlive: true)
+@riverpod
 {{name.pascalCase()}}RemoteDataSource {{name.camelCase()}}RemoteDataSource(
   {{name.pascalCase()}}RemoteDataSourceRef ref,
 ) {

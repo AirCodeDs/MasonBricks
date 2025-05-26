@@ -9,7 +9,7 @@ import 'package:{{project_name}}/core/use_cases/use_case.dart';
 import 'package:{{project_name}}/features/{{name}}/data/models/{{name}}_model.dart';
 import 'package:{{project_name}}/features/{{name}}/data/repositories/{{name}}_repository_impl.dart'; // Assure-toi que le chemin est correct
 
-class Add{{name.pascalCase()}} implements UseCase<ApiResponse, TemplateParams> {
+class Add{{name.pascalCase()}} implements UseCase<{{name.camelCase()}}, TemplateParams> {
   Add{{name.pascalCase()}}(this.{{name.camelCase()}}RepositoryImpl);
   final {{name.pascalCase()}}RepositoryImpl {{name.camelCase()}}RepositoryImpl;
 
@@ -19,3 +19,4 @@ class Add{{name.pascalCase()}} implements UseCase<ApiResponse, TemplateParams> {
   ) =>
       {{name.camelCase()}}RepositoryImpl.add{{name.pascalCase()}}(templateParams);
 }
+

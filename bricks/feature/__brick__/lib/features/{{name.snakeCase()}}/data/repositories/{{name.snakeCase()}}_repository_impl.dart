@@ -162,7 +162,7 @@ class {{name.pascalCase()}}RepositoryImpl implements {{name.pascalCase()}}Reposi
       );
       
       if (response['success'] == true) {
-       return Right({{name.pascalCase()}}.fromMap(response['data']));
+       return Right({{name.pascalCase()}}Model.fromMap(response['data']));
       } else {
         return Left(
           ServerFailure(errorMessage: response['message'].toString()),
@@ -178,5 +178,6 @@ class {{name.pascalCase()}}RepositoryImpl implements {{name.pascalCase()}}Reposi
     }
   }
 }
+
 
 

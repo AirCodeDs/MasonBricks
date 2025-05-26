@@ -3,7 +3,7 @@ import 'package:{{project_name}}/features/{{name.snakeCase()}}/data/data_sources
 import 'package:{{project_name}}/services/api/local_api/local_api.dart';
 part '{{name.snakeCase()}}_local_data_source_provider.g.dart';
 
-@Riverpod(keepAlive: true)
+@riverpod
 {{name.pascalCase()}}LocalDataSource {{name.camelCase()}}LocalDataSource(
   {{name.pascalCase()}}LocalDataSourceRef ref,
 ) {

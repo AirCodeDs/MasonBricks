@@ -17,7 +17,7 @@ import 'package:{{project_name}}/features/{{name}}/domain/use_cases/update_{{nam
 
 part '{{name}}_provider.g.dart'; // N'oublie pas de générer ce fichier après la création !
 
-@Riverpod(keepAlive: true)
+@riverpod
 class {{name.pascalCase()}}Notifier extends _${{name.pascalCase()}}Notifier {
   late final Add{{name.pascalCase()}} _add{{name.pascalCase()}};
   late final Update{{name.pascalCase()}} _update{{name.pascalCase()}};
@@ -199,7 +199,7 @@ class {{name.pascalCase()}}Notifier extends _${{name.pascalCase()}}Notifier {
   // si tu ne l'as pas déjà fait.
 }
 
-@Riverpod(keepAlive: true)
+@riverpod
 {{name.pascalCase()}}RepositoryImpl {{name.camelCase()}}RepositoryImpl(
   {{name.camelCase()}}RepositoryImplRef ref,
 ) {
@@ -211,7 +211,7 @@ class {{name.pascalCase()}}Notifier extends _${{name.pascalCase()}}Notifier {
 }
 
 // Assurez-vous que tu as aussi un provider pour ton RemoteDataSource, ex:
-@Riverpod(keepAlive: true)
+@riverpod
 {{name.pascalCase()}}RemoteDataSource {{name.camelCase()}}RemoteDataSource(
   {{name.camelCase()}}RemoteDataSourceRef ref,
 ) {
@@ -220,7 +220,7 @@ class {{name.pascalCase()}}Notifier extends _${{name.pascalCase()}}Notifier {
 }
 
 // Exemple pour apiClientProvider (à placer dans un fichier de services partagés)
-@Riverpod(keepAlive: true)
+@riverpod
 ApiClient apiClient(ApiClientRef ref) {
   return ApiClient(); // Ou ta logique d'instanciation de ApiClient
 }
