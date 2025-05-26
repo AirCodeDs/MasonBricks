@@ -10,3 +10,4 @@ part '{{name.snakeCase()}}_local_data_source_provider.g.dart';
   final localApi = ref.read(localApiProvider);
   return {{name.pascalCase()}}LocalDataSource(localApi);
 }
+

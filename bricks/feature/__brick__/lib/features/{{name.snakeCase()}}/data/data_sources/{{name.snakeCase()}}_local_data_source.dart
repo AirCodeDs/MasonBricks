@@ -1,5 +1,4 @@
 import 'package:{{project_name}}/config/logs/app_log.dart';
-import 'package:{{project_name}}/core/constants/api_url/api_url.dart';
 import 'package:{{project_name}}/core/params/params.dart';
 import 'package:{{project_name}}/services/api/local_api/local_api.dart';
 

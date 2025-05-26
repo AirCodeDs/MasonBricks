@@ -2,7 +2,7 @@
 import 'package:{{project_name}}/config/logs/app_log.dart';
 import 'package:{{project_name}}/core/constants/api_url/api_url.dart';
 import 'package:{{project_name}}/core/params/params.dart';
-import 'package:{{project_name}}/services/api/api_client/api_client.dart'; 
+import 'package:urban_transport/services/api/remote_api/abstract/api_client.dart'; 
 
 class {{name.pascalCase()}}RemoteDataSource with Loggable {
   {{name.pascalCase()}}RemoteDataSource(this.apiClient); 
@@ -34,7 +34,7 @@ class {{name.pascalCase()}}RemoteDataSource with Loggable {
     return response;
   }
   
-  dynamic> get{{name.pascalCase()}}ById(ParamOne paramOne) async {
+  Future<dynamic> get{{name.pascalCase()}}ById(ParamOne paramOne) async {
     final response = await apiClient.init( 
       path: '', 
       requestType: RequestType.get,

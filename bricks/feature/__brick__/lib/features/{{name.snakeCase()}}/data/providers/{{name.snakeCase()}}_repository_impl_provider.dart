@@ -16,3 +16,4 @@ part '{{name.snakeCase()}}_repository_impl_provider.g.dart';
 }
 
 
+
