@@ -49,7 +49,7 @@ class {{name.pascalCase()}}RepositoryImpl implements {{name.pascalCase()}}Reposi
       );
       
       if (response['success'] == true) {
-        return Right(ApiResponse(response['message']));
+       return Right({{name.pascalCase()}}.fromMap(response['data']));
       } else {
         return Left(
           ServerFailure(errorMessage: response['message'].toString()),
@@ -135,8 +135,7 @@ class {{name.pascalCase()}}RepositoryImpl implements {{name.pascalCase()}}Reposi
       );
 
       if (response['success'] == true) {
-        final {const const {name.camelCase()}} = {{name.pascalCase()}}Model.fromMap(response['data']);
-        return Right({{name.camelCase()}});
+         return Right({{name.pascalCase()}}.fromMap(response['data']));
       } else {
         return Left(
           ServerFailure(errorMessage: response['message'].toString()),
@@ -163,8 +162,7 @@ class {{name.pascalCase()}}RepositoryImpl implements {{name.pascalCase()}}Reposi
       );
       
       if (response['success'] == true) {
-        final {const const {name.camelCase()}} = {{name.pascalCase()}}Model.fromMap(response['data']);
-        return Right({{name.camelCase()}});
+       return Right({{name.pascalCase()}}.fromMap(response['data']));
       } else {
         return Left(
           ServerFailure(errorMessage: response['message'].toString()),

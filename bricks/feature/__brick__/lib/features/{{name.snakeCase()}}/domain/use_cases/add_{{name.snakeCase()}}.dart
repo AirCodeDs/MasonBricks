@@ -13,7 +13,7 @@ class Add{{name.pascalCase()}} implements UseCase<ApiResponse, TemplateParams> {
   final {{name.pascalCase()}}RepositoryImpl {{name.camelCase()}}RepositoryImpl;
 
   @override
-  Future<Either<Failure, ApiResponse>> call(
+  Future<Either<Failure, {{name.pascalCase()}}Model>> call(
     TemplateParams templateParams,
   ) =>
       {{name.camelCase()}}RepositoryImpl.add{{name.pascalCase()}}(templateParams);

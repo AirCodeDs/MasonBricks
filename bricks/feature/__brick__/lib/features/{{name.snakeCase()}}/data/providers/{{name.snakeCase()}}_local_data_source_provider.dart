@@ -5,7 +5,7 @@ part '{{name.snakeCase()}}_local_data_source_provider.g.dart';
 
 @Riverpod(keepAlive: true)
 {{name.pascalCase()}}LocalDataSource {{name.camelCase()}}LocalDataSource(
-  {{name.camelCase()}}LocalDataSourceRef ref,
+  {{name.pascalCase()}}LocalDataSourceRef ref,
 ) {
   final localApi = ref.read(localApiProvider);
   return {{name.pascalCase()}}LocalDataSource(localApi);

@@ -8,27 +8,27 @@ class {{name.pascalCase()}}LocalDataSource with Loggable {
   final LocalApi localApi;
   
   Future<dynamic> add{{name.pascalCase()}}(TemplateParams templateParams) async {
-    final response = {};
+    final response = <String,dynamic>{};
     return response;
   }
 
   Future<dynamic> update{{name.pascalCase()}}(TemplateParams templateParams) async {
-    final response = {};
+    final response = <String,dynamic>{};
     return response;
   }
 
   Future<dynamic> getAll{{name.pascalCase()}}s(NoParams noParams) async {
-    final response = {};
+    final response = <String,dynamic>{};
     return response;
   }
   
   Future<dynamic> get{{name.pascalCase()}}ById(ParamOne paramOne) async {
-    final response = {};
+    final response = <String,dynamic>{};
     return response;
   }
 
   Future<dynamic> delete{{name.pascalCase()}}(ParamOne paramOne) async {
-    final response = {};
+    final response = <String,dynamic>{};
     return response;
   }
 }

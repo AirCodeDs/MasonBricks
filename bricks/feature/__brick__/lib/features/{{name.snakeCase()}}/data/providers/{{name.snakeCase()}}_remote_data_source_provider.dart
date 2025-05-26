@@ -7,7 +7,7 @@ part '{{name.snakeCase()}}_remote_data_source_provider.g.dart';
 
 @Riverpod(keepAlive: true)
 {{name.pascalCase()}}RemoteDataSource {{name.camelCase()}}RemoteDataSource(
-  {{name.camelCase()}}RemoteDataSourceRef ref,
+  {{name.pascalCase()}}RemoteDataSourceRef ref,
 ) {
   final apiClient = ref.read(apiClientProvider);
   return {{name.pascalCase()}}RemoteDataSource(apiClient);

@@ -11,7 +11,7 @@ import 'package:{{project_name}}/features/{{name}}/data/repositories/{{name}}_re
 import 'package:{{project_name}}/features/{{name}}/domain/use_cases/add_{{name}}.dart';
 import 'package:{{project_name}}/features/{{name}}/domain/use_cases/delete_{{name}}.dart';
 import 'package:{{project_name}}/features/{{name}}/domain/use_cases/get_all_{{name}}s.dart';
-import 'package:{{project_name}}/features/{{name}}/domain/use_cases/get_by_id_{{name}}.dart';
+import 'package:{{project_name}}/features/{{name}}/domain/use_cases/get_{{name}}_by_id.dart';
 import 'package:{{project_name}}/features/{{name}}/domain/use_cases/update_{{name}}.dart';
 
 

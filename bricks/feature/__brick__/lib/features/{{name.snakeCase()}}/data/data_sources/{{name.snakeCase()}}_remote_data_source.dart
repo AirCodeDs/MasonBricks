@@ -8,7 +8,6 @@ class {{name.pascalCase()}}RemoteDataSource with Loggable {
   {{name.pascalCase()}}RemoteDataSource(this.apiClient); 
   final ApiClient apiClient; 
 
-
   Future<dynamic> add{{name.pascalCase()}}(TemplateParams templateParams) async {
     final response = await apiClient.init( 
       path: '', 

@@ -8,7 +8,7 @@ part '{{name.snakeCase()}}_repository_impl_provider.g.dart';
 
 @Riverpod(keepAlive: true)
 {{name.pascalCase()}}RepositoryImpl {{name.camelCase()}}RepositoryImpl(
-  {{name.camelCase()}}RepositoryImplRef ref,
+  {{name.pascalCase()}}RepositoryImplRef ref,
 ) {
   final remoteDataSource = ref.read({{name.camelCase()}}RemoteDataSourceProvider);
   // final localDataSource = ref.read({{name.camelCase()}}LocalDataSourceProvider); // Uncomment if you have a local data source

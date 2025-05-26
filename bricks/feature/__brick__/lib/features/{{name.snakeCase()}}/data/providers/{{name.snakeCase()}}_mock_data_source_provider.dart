@@ -1,51 +1,12 @@
+import 'package:{{project_name}}/features/{{name.snakeCase()}}/data/data_sources/{{name.snakeCase()}}_mock_data_source.dart';
+import 'package:{{project_name}}/services/api/mock_api/mock_api.dart';
 
-import 'package:{{project_name}}/config/logs/app_log.dart';
-import 'package:{{project_name}}/core/constants/api_url/api_url.dart';
-import 'package:{{project_name}}/core/params/params.dart';
-import 'package:{{project_name}}/services/api/api_client/api_client.dart'; 
+part '{{name.snakeCase()}}_mock_data_source_provider.g.dart';
 
-class {{name.pascalCase()}}DummyDataSource with Loggable {
-  {{name.pascalCase()}}DummyDataSource(); 
-
-  Future<dynamic> add{{name.pascalCase()}}(TemplateParams templateParams) async {
-    final response = await apiClient.init( 
-      path: '', 
-      requestType: RequestType.post,
-      body: templateParams.params,
-    );
-    return response;
-  }
-
-  Future<dynamic> update{{name.pascalCase()}}(TemplateParams templateParams) async {
-    final response = await apiClient.init( 
-      path: '', 
-      requestType: RequestType.post,
-      body: templateParams.params,
-    );
-    return response;
-  }
-
-  Future<dynamic> getAll{{name.pascalCase()}}s(NoParams noParams) async {
-    final response = await apiClient.init( 
-      path:'',
-      requestType: RequestType.get,
-    );
-    return response;
-  }
-  
-  dynamic> get{{name.pascalCase()}}ById(ParamOne paramOne) async {
-    final response = await apiClient.init( 
-      path: '', 
-      requestType: RequestType.get,
-    );
-    return response;
-  }
-
-  Future<dynamic> delete{{name.pascalCase()}}(ParamOne paramOne) async {
-    final response = await apiClient.init( 
-      path: '', 
-      requestType: RequestType.delete,
-    );
-    return response;
-  }
+@Riverpod(keepAlive: true)
+{{name.pascalCase()}}MockDataSource {{name.camelCase()}}MockDataSource(
+  {{name.pascalCase()}}MockDataSourceRef ref,
+) {
+  final mockApi = ref.read(mockApiProvider);
+  return {{name.pascalCase()}}MockDataSource(mockApi);
 }

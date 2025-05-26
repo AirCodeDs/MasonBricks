@@ -9,47 +9,27 @@ class {{name.pascalCase()}}MockDataSource with Loggable {
   final MockApi mockApi;
 
   Future<dynamic> add{{name.pascalCase()}}(TemplateParams templateParams) async {
-    final response = await mockApi.init( 
-      path: '{{name.snakeCase()}}', 
-      requestType: RequestType.post,
-      body: templateParams.params,
-    );
+    final response = <String,dynamic>{};
     return response;
   }
 
   Future<dynamic> update{{name.pascalCase()}}(TemplateParams templateParams) async {
-    final response = await mockApi.init( 
-      path: '{{name.snakeCase()}}/${templateParams.params.id}', 
-      requestType: RequestType.put,
-      body: templateParams.params,
-    );
+    final response = <String,dynamic>{};
     return response;
   }
 
   Future<dynamic> getAll{{name.pascalCase()}}s(NoParams noParams) async {
-    final response = await mockApi.init( 
-      path: '{{name.snakeCase()}}s',
-      requestType: RequestType.get,
-      queryParameters: {
-        'page': noParams.paginationPageIndex?.toString() ?? '1',
-      },
-    );
+    final response = <String,dynamic>{};
     return response;
   }
   
   Future<dynamic> get{{name.pascalCase()}}ById(ParamOne paramOne) async {
-    final response = await mockApi.init( 
-      path: '{{name.snakeCase()}}/${paramOne.id}', 
-      requestType: RequestType.get,
-    );
+    final response = <String,dynamic>{};
     return response;
   }
 
   Future<dynamic> delete{{name.pascalCase()}}(ParamOne paramOne) async {
-    final response = await mockApi.init( 
-      path: '{{name.snakeCase()}}/${paramOne.id}', 
-      requestType: RequestType.delete,
-    );
+    final response = <String,dynamic>{};
     return response;
   }
 }
