@@ -1,7 +1,3 @@
-// Package imports:
-import 'package:dartz/dartz.dart';
-
-// Project imports:
 import 'package:{{project_name}}/core/errors/failure.dart';
 import 'package:{{project_name}}/core/params/params.dart';
 import 'package:{{project_name}}/core/use_cases/use_case.dart';

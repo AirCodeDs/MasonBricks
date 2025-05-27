@@ -3,9 +3,10 @@ import 'package:flutter/material.dart';
 
 // Package imports:
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 // Project imports:
-import 'package:app_ui/app_ui.dart'; // Assure-toi que ce package est bien dans tes dépendances
+import 'package:app_ui/app_ui.dart';
 
 class Adaptive{{name.pascalCase()}}Screen extends StatelessWidget {
   const Adaptive{{name.pascalCase()}}Screen({super.key});
@@ -13,8 +14,6 @@ class Adaptive{{name.pascalCase()}}Screen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AdaptivePlatformUI.scaffold(
-      // Tu peux ajouter un AppBar ici si tu veux qu'il soit géré par AdaptivePlatformUI
-      // appBar: AdaptivePlatformUI.appBar(context: context, title: '{{name.pascalCase()}} Screen'),
       body: const _{{name.pascalCase()}}ScreenBody(),
     );
   }
@@ -32,19 +31,10 @@ class _{{name.pascalCase()}}ScreenBody extends ConsumerWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text(
-            'Bienvenue sur l\'écran {{name.pascalCase()}}!',
-            style: Theme.of(context).textTheme.headlineMedium,
+         AppText(
+            'Your Content',
+            fontSize: 14.sp,
           ),
-          const SizedBox(height: 20),
-          // Tu peux ajouter des éléments interactifs ici qui utilisent `ref`
-          // Par exemple, un bouton qui interagit avec un provider :
-          // ElevatedButton(
-          //   onPressed: () {
-          //     ref.read(someProvider.notifier).doSomething();
-          //   },
-          //   child: const Text('Faire quelque chose'),
-          // ),
         ],
       ),
     );

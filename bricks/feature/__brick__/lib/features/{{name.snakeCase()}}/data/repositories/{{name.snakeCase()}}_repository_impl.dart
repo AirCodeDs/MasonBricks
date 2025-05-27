@@ -40,12 +40,12 @@ class {{name.pascalCase()}}RepositoryImpl implements {{name.pascalCase()}}Reposi
 
   @override
   Future<Either<Failure, {{name.pascalCase()}}Model>> add{{name.pascalCase()}}(
-    TemplateParams templateParams,
+    BodyParams bodyParams,
   ) async {
     try {
       final dataSource = getDataSource();
       final response = await dataSource.add{{name.pascalCase()}}(
-        templateParams,
+        bodyParams,
       );
       
       if (response['success'] == true) {
@@ -66,11 +66,11 @@ class {{name.pascalCase()}}RepositoryImpl implements {{name.pascalCase()}}Reposi
   }
 
   @override
-  Future<Either<Failure, ApiResponse>> delete{{name.pascalCase()}}(ParamOne paramOne) async {
+  Future<Either<Failure, ApiResponse>> delete{{name.pascalCase()}}(UrlParam urlParam) async {
     try {
       final dataSource = getDataSource();
       final response = await dataSource.delete{{name.pascalCase()}}(
-        paramOne,
+        urlParam,
       );
       
       if (response['success'] == true) {
@@ -126,12 +126,12 @@ class {{name.pascalCase()}}RepositoryImpl implements {{name.pascalCase()}}Reposi
 
   @override
   Future<Either<Failure, {{name.pascalCase()}}Model>> get{{name.pascalCase()}}ById(
-    ParamOne paramOne,
+    UrlParam urlParam,
   ) async {
     try {
       final dataSource = getDataSource();
       final response = await dataSource.get{{name.pascalCase()}}ById(
-        paramOne,
+        urlParam,
       );
 
       if (response['success'] == true) {
@@ -153,12 +153,12 @@ class {{name.pascalCase()}}RepositoryImpl implements {{name.pascalCase()}}Reposi
 
   @override
   Future<Either<Failure, {{name.pascalCase()}}Model>> update{{name.pascalCase()}}(
-    TemplateParams templateParams,
+    UrlAndBodyParams urlAndBodyParams,
   ) async {
     try {
       final dataSource = getDataSource();
       final response = await dataSource.update{{name.pascalCase()}}(
-        templateParams,
+        urlAndBodyParams,
       );
       
       if (response['success'] == true) {
@@ -178,6 +178,9 @@ class {{name.pascalCase()}}RepositoryImpl implements {{name.pascalCase()}}Reposi
     }
   }
 }
+
+
+
 
 
 

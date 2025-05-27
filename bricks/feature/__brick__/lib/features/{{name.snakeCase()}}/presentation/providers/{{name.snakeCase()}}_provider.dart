@@ -69,7 +69,7 @@ class {{name.pascalCase()}}Notifier extends _${{name.pascalCase()}}Notifier {
   // Add this to complete the add{{name.pascalCase()}} method
   @override
   Future<Either<Failure, ApiResponse>> add{{name.pascalCase()}}(Map<String, dynamic> data) async {
-    final result = await _add{{name.pascalCase()}}(TemplateParams(params: data));
+    final result = await _add{{name.pascalCase()}}(BodyParams(params: data));
 
     return result.fold(
       (failure) => Left(failure),
@@ -84,7 +84,7 @@ class {{name.pascalCase()}}Notifier extends _${{name.pascalCase()}}Notifier {
   // Add update method
   Future<Either<Failure, {{name.pascalCase()}}Model>> update{{name.pascalCase()}}(String id, Map<String, dynamic> data) async {
     data['id'] = id; // Ensure ID is included in the update data
-    final result = await _update{{name.pascalCase()}}(TemplateParams(params: data));
+    final result = await _update{{name.pascalCase()}}(UrlAndBodyParams(params: data));
 
     return result.fold(
       (failure) => Left(failure),
@@ -103,7 +103,7 @@ class {{name.pascalCase()}}Notifier extends _${{name.pascalCase()}}Notifier {
 
   // Add delete method
   Future<Either<Failure, ApiResponse>> delete{{name.pascalCase()}}(String id) async {
-    final result = await _delete{{name.pascalCase()}}(ParamOne(id: id));
+    final result = await _delete{{name.pascalCase()}}(UrlParam(id: id));
 
     return result.fold(
       (failure) => Left(failure),
@@ -120,11 +120,11 @@ class {{name.pascalCase()}}Notifier extends _${{name.pascalCase()}}Notifier {
 
   // Add get by ID method
   Future<Either<Failure, {{name.pascalCase()}}Model>> get{{name.pascalCase()}}ById(String id) async {
-    return await _get{{name.pascalCase()}}ById(ParamOne(id: id));
+    return await _get{{name.pascalCase()}}ById(UrlParam(id: id));
   }
   /// Met à jour une entité {{name.pascalCase()}} existante dans la liste en mémoire.
   Future<Either<Failure, ApiResponse>> update{{name.pascalCase()}}(Map<String, dynamic> data, String {{name.camelCase()}}Id) async {
-    final result = await _update{{name.pascalCase()}}(TemplateParams(params: data, paramOne: ParamOne({{name.camelCase()}}Id)));
+    final result = await _update{{name.pascalCase()}}(UrlAndBodyParams(params: data, urlParam: UrlParam({{name.camelCase()}}Id)));
 
     return result.fold(
       (failure) => Left(failure),
@@ -148,7 +148,7 @@ class {{name.pascalCase()}}Notifier extends _${{name.pascalCase()}}Notifier {
 
   /// Supprime une entité {{name.pascalCase()}} de la liste en mémoire.
   Future<Either<Failure, ApiResponse>> delete{{name.pascalCase()}}(String {{name.camelCase()}}Id) async {
-    final result = await _delete{{name.pascalCase()}}(ParamOne({{name.camelCase()}}Id));
+    final result = await _delete{{name.pascalCase()}}(UrlParam({{name.camelCase()}}Id));
 
     return result.fold(
       (failure) => Left(failure),
@@ -172,7 +172,7 @@ class {{name.pascalCase()}}Notifier extends _${{name.pascalCase()}}Notifier {
     }
 
     // Si non trouvé, va chercher via le use case
-    final result = await _get{{name.pascalCase()}}ById(ParamOne({{name.camelCase()}}Id));
+    final result = await _get{{name.pascalCase()}}ById(UrlParam({{name.camelCase()}}Id));
     return result.fold(
       (failure) => Left(failure),
       ({{name.camelCase()}}) => Right({{name.camelCase()}}),

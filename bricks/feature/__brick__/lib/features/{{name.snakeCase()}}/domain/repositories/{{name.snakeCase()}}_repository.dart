@@ -14,14 +14,14 @@ abstract class {{name.pascalCase()}}Repository {
   ///
   /// Retourne un [ApiResponse] en cas de succès ou une [Failure] en cas d'erreur.
   Future<Either<Failure, {{name.pascalCase()}}Model>> add{{name.pascalCase()}}(
-    TemplateParams templateParams,
+    BodyParams bodyParams,
   );
 
   /// Met à jour une entité `{{name.pascalCase()}}` existante.
   ///
   /// Retourne un [ApiResponse] en cas de succès ou une [Failure] en cas d'erreur.
   Future<Either<Failure, {{name.pascalCase()}}Model>> update{{name.pascalCase()}}(
-    TemplateParams templateParams,
+    UrlAndBodyParams urlAndBodyParams,
   );
 
   /// Supprime une entité `{{name.pascalCase()}}` par son ID.

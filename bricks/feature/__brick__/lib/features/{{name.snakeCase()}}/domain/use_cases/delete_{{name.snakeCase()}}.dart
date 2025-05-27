@@ -1,20 +1,17 @@
-// Package imports:
 import 'package:dartz/dartz.dart';
-
-// Project imports:
 import 'package:{{project_name}}/core/api_response/api_response.dart';
 import 'package:{{project_name}}/core/errors/failure.dart';
 import 'package:{{project_name}}/core/params/params.dart';
 import 'package:{{project_name}}/core/use_cases/use_case.dart';
 import 'package:{{project_name}}/features/{{name}}/data/repositories/{{name}}_repository_impl.dart'; // Assure-toi que le chemin est correct
 
-class Delete{{name.pascalCase()}} implements UseCase<ApiResponse, ParamOne> {
+class Delete{{name.pascalCase()}} implements UseCase<ApiResponse, UrlParam> {
   Delete{{name.pascalCase()}}(this.{{name.camelCase()}}RepositoryImpl);
   final {{name.pascalCase()}}RepositoryImpl {{name.camelCase()}}RepositoryImpl;
 
   @override
   Future<Either<Failure, ApiResponse>> call(
-    ParamOne paramOne,
+    UrlParam urlParam,
   ) =>
-      {{name.camelCase()}}RepositoryImpl.delete{{name.pascalCase()}}(paramOne);
+      {{name.camelCase()}}RepositoryImpl.delete{{name.pascalCase()}}(urlParam);
 }

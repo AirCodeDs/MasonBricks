@@ -1,11 +1,13 @@
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:{{project_name}}/features/{{name.snakeCase()}}/data/data_sources/{{name.snakeCase()}}_local_data_source.dart';
-import 'package:{{project_name}}/services/api/local_api/local_api.dart';
+import 'package:{{project_name}}/services/api/providers/api_provider.dart';
+
 part '{{name.snakeCase()}}_local_data_source_provider.g.dart';
 
 @riverpod
 {{name.pascalCase()}}LocalDataSource {{name.camelCase()}}LocalDataSource(
-  {{name.pascalCase()}}LocalDataSourceRef ref,
+  Ref ref,
 ) {
   final localApi = ref.read(localApiProvider);
   return {{name.pascalCase()}}LocalDataSource(localApi);

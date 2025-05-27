@@ -7,27 +7,27 @@ class {{name.pascalCase()}}MockDataSource with Loggable {
   {{name.pascalCase()}}MockDataSource(this.mockApi); 
   final MockApi mockApi;
 
-  Future<dynamic> add{{name.pascalCase()}}(TemplateParams templateParams) async {
+  Future<dynamic> add{{name.pascalCase()}} (BodyParams bodyParams) async {
     final response = <String,dynamic>{};
     return response;
   }
 
-  Future<dynamic> update{{name.pascalCase()}}(TemplateParams templateParams) async {
+  Future<dynamic> update{{name.pascalCase()}} (UrlAndBodyParams urlAndBodyParams) async {
     final response = <String,dynamic>{};
     return response;
   }
 
-  Future<dynamic> getAll{{name.pascalCase()}}s(NoParams noParams) async {
+  Future<dynamic> getAll{{name.pascalCase()}}s (NoParams noParams) async {
     final response = <String,dynamic>{};
     return response;
   }
   
-  Future<dynamic> get{{name.pascalCase()}}ById(ParamOne paramOne) async {
+  Future<dynamic> get{{name.pascalCase()}}ById (UrlParam urlParam) async {
     final response = <String,dynamic>{};
     return response;
   }
 
-  Future<dynamic> delete{{name.pascalCase()}}(ParamOne paramOne) async {
+  Future<dynamic> delete{{name.pascalCase()}} (UrlParam urlParam) async {
     final response = <String,dynamic>{};
     return response;
   }
