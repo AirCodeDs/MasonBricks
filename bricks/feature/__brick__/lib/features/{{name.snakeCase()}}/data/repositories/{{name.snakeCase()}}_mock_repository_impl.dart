@@ -16,27 +16,18 @@ import 'package:{{project_name}}/features/{{name}}/data/data_sources/{{name.snak
 import 'package:{{project_name}}/features/{{name}}/data/models/{{name}}_model.dart';
 import 'package:{{project_name}}/features/{{name}}/domain/repositories/{{name}}_repository.dart';
 
-class {{name.pascalCase()}}RepositoryImpl implements {{name.pascalCase()}}Repository {
-  {{name.pascalCase()}}RepositoryImpl({
+class {{name.pascalCase()}}MockRepositoryImpl implements {{name.pascalCase()}}RepositoryInterface {
+  {{name.pascalCase()}}MockRepositoryImpl({
     required this.remoteDataSource,
     required this.localDataSource,
     required this.mockDataSource,
-    this.useRemote = true,
-    this.useMock = false,
   });
   
   final {{name.pascalCase()}}RemoteDataSource remoteDataSource;
   final {{name.pascalCase()}}LocalDataSource localDataSource;
   final {{name.pascalCase()}}MockDataSource mockDataSource;
-  final bool useRemote;
-  final bool useMock;
   
-  // Helper method to determine which data source to use
-  dynamic getDataSource() {
-    if (useMock) return mockDataSource;
-    if (useRemote) return remoteDataSource;
-    return localDataSource;
-  }
+
 
   @override
   Future<Either<Failure, {{name.pascalCase()}}Model>> add{{name.pascalCase()}}(
@@ -66,7 +57,7 @@ class {{name.pascalCase()}}RepositoryImpl implements {{name.pascalCase()}}Reposi
   }
 
   @override
-  Future<Either<Failure, ApiResponse>> delete{{name.pascalCase()}}(UrlParam urlParam) async {
+  Future<Either<Failure, ApiResponse>> delete{{name.pascalCase()}}(UrlParams urlParams) async {
     try {
       final dataSource = getDataSource();
       final response = await dataSource.delete{{name.pascalCase()}}(
@@ -126,7 +117,7 @@ class {{name.pascalCase()}}RepositoryImpl implements {{name.pascalCase()}}Reposi
 
   @override
   Future<Either<Failure, {{name.pascalCase()}}Model>> get{{name.pascalCase()}}ById(
-    UrlParam urlParam,
+    UrlParams urlParams,
   ) async {
     try {
       final dataSource = getDataSource();

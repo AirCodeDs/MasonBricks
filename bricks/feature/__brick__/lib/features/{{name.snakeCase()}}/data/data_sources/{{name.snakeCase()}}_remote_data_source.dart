@@ -4,8 +4,9 @@ import 'package:urban_transport/core/constants/api_url/api_url.dart';
 import 'package:{{project_name}}/core/params/params.dart';
 import 'package:{{project_name}}/features/{{name.snakeCase()}}/domain/models/{{name.snakeCase()}}_model.dart';
 import 'package:{{project_name}}/services/api/remote_api/abstract/api_client.dart';
+import 'package:{{project_name}}/features/{{name}}/data/data_sources/{{name.snakeCase()}}_data_source_interface.dart';
 
-class {{name.pascalCase()}}RemoteDataSource with Loggable {
+class {{name.pascalCase()}}RemoteDataSource with Loggable implements {{name.pascalCase()}}DataSourceInterface
   {{name.pascalCase()}}RemoteDataSource(this.apiClient); 
   final ApiClient apiClient; 
 
@@ -35,7 +36,7 @@ class {{name.pascalCase()}}RemoteDataSource with Loggable {
     return response;
   }
   
-  Future<dynamic> get{{name.pascalCase()}}ById (UrlParam urlParam) async {
+  Future<dynamic> get{{name.pascalCase()}}ById (UrlParams urlParams) async {
     final response = await apiClient.init( 
       path: ApiUrl.dev, 
       requestType: RequestType.get,
@@ -43,7 +44,7 @@ class {{name.pascalCase()}}RemoteDataSource with Loggable {
     return response;
   }
 
-  Future<dynamic> delete{{name.pascalCase()}} (UrlParam urlParam) async {
+  Future<dynamic> delete{{name.pascalCase()}} (UrlParams urlParams) async {
     final response = await apiClient.init( 
       path: ApiUrl.dev, 
       requestType: RequestType.delete,

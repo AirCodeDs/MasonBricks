@@ -9,7 +9,7 @@ import 'package:{{project_name}}/core/params/params.dart';
 import 'package:{{project_name}}/core/utils/models/pagination_data_model.dart';
 import 'package:{{project_name}}/features/{{name}}/data/models/{{name}}_model.dart'; // Assurez-vous que le modèle existe
 
-abstract class {{name.pascalCase()}}Repository {
+abstract class {{name.pascalCase()}}RepositoryInterface {
   /// Crée une nouvelle entité `{{name.pascalCase()}}`.
   ///
   /// Retourne un [ApiResponse] en cas de succès ou une [Failure] en cas d'erreur.
@@ -28,7 +28,7 @@ abstract class {{name.pascalCase()}}Repository {
   ///
   /// Retourne un [ApiResponse] en cas de succès ou une [Failure] en cas d'erreur.
   Future<Either<Failure, ApiResponse>> delete{{name.pascalCase()}}(
-    ParamOne paramOne,
+    UrlParams urlParams,
   );
 
   /// Récupère toutes les entités `{{name.pascalCase()}}` avec pagination.
@@ -43,6 +43,6 @@ abstract class {{name.pascalCase()}}Repository {
   ///
   /// Retourne un [{{name.pascalCase()}}Model] en cas de succès ou une [Failure] en cas d'erreur.
   Future<Either<Failure, {{name.pascalCase()}}Model>> get{{name.pascalCase()}}ById(
-    ParamOne paramOne,
+    UrlParams urlParams,
   );
 }

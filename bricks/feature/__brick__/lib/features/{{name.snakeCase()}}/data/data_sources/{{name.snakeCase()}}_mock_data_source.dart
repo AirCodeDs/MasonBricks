@@ -2,8 +2,9 @@
 import 'package:{{project_name}}/config/logs/app_log.dart';
 import 'package:{{project_name}}/core/params/params.dart';
 import 'package:{{project_name}}/services/api/mock_api/mock_api.dart'; 
+import 'package:{{project_name}}/features/{{name}}/data/data_sources/{{name.snakeCase()}}_data_source_interface.dart';
 
-class {{name.pascalCase()}}MockDataSource with Loggable {
+class {{name.pascalCase()}}MockDataSource with Loggable implements {{name.pascalCase()}}DataSourceInterface
   {{name.pascalCase()}}MockDataSource(this.mockApi); 
   final MockApi mockApi;
 
@@ -22,12 +23,12 @@ class {{name.pascalCase()}}MockDataSource with Loggable {
     return response;
   }
   
-  Future<dynamic> get{{name.pascalCase()}}ById (UrlParam urlParam) async {
+  Future<dynamic> get{{name.pascalCase()}}ById (UrlParams urlParams) async {
     final response = <String,dynamic>{};
     return response;
   }
 
-  Future<dynamic> delete{{name.pascalCase()}} (UrlParam urlParam) async {
+  Future<dynamic> delete{{name.pascalCase()}} (UrlParams urlParams) async {
     final response = <String,dynamic>{};
     return response;
   }
