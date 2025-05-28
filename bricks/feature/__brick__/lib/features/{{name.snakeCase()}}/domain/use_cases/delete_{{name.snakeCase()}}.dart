@@ -2,12 +2,12 @@
 import 'package:dartz/dartz.dart';
 
 // Project imports:
-import 'package:{{project_name.snakeCase()}}/core/api_response/api_response.dart';
-import 'package:{{project_name.snakeCase()}}/core/errors/failure.dart';
-import 'package:{{project_name.snakeCase()}}/core/params/params.dart';
-import 'package:{{project_name.snakeCase()}}/core/use_cases/use_case.dart';
+import 'package:{{name.snakeCase()}}/core/api_response/api_response.dart';
+import 'package:{{name.snakeCase()}}/core/errors/failure.dart';
+import 'package:{{name.snakeCase()}}/core/params/params.dart';
+import 'package:{{name.snakeCase()}}/core/use_cases/use_case.dart';
 
-import 'package:{{project_name.snakeCase()}}/features/{{name.snakeCase()}}/domain/repositories/{{name.snakeCase()}}_repository_interface.dart'; // Assure-toi que le chemin est correct
+import 'package:{{name.snakeCase()}}/features/{{name.snakeCase()}}/domain/repositories/{{name.snakeCase()}}_repository_interface.dart'; // Assure-toi que le chemin est correct
 
 class Delete{{name.pascalCase()}} implements UseCase<ApiResponse, Delete{{name.pascalCase()}}Params> {
   Delete{{name.pascalCase()}}(this._repository);

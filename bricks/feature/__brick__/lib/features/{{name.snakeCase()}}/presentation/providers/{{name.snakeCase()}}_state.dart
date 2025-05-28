@@ -1,5 +1,5 @@
 // Project imports:
-import 'package:{{project_name.snakeCase()}}/features/{{name.snakeCase()}}/data/models/{{name.snakeCase()}}_model.dart';
+import 'package:{{name.snakeCase()}}/features/{{name.snakeCase()}}/data/models/{{name.snakeCase()}}_model.dart';
 
 class {{name.pascalCase()}}State {
   const {{name.pascalCase()}}State({this.{{name.snakeCase()}}s = const [], this.errorMessage});
