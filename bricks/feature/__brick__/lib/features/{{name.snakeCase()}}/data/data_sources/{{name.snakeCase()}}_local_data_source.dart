@@ -1,7 +1,7 @@
 // Project imports:
 import 'package:urban_transport/config/logs/app_log.dart';
 import 'package:urban_transport/core/params/params.dart';
-import 'package:urban_transport/features/{{name.snake_case()}}/domain/data_sources/{{name.snake_case()}}_data_source_interface.dart';
+import 'package:urban_transport/features/{{name.snakeCase()}}/domain/data_sources/{{name.snakeCase()}}_data_source_interface.dart';
 import 'package:urban_transport/services/api/local_api/local_api.dart';
 
 class {{name.pascalCase()}}LocalDataSource

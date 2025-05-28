@@ -3,13 +3,13 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 // Project imports:
-import 'package:urban_transport/features/{{name.snake_case()}}/data/providers/data_sources/{{name.snake_case()}}_local_data_source_provider.dart';
-import 'package:urban_transport/features/{{name.snake_case()}}/data/repositories/{{name.snake_case()}}_local_repository_impl.dart';
+import 'package:urban_transport/features/{{name.snakeCase()}}/data/providers/data_sources/{{name.snakeCase()}}_local_data_source_provider.dart';
+import 'package:urban_transport/features/{{name.snakeCase()}}/data/repositories/{{name.snakeCase()}}_local_repository_impl.dart';
 
-part '{{name.snake_case()}}_local_repository_impl_provider.g.dart';
+part '{{name.snakeCase()}}_local_repository_impl_provider.g.dart';
 
 @riverpod
-{{name.pascalCase()}}LocalRepositoryImpl {{name.snake_case()}}LocalRepositoryImpl(Ref ref) {
-  final localDataSource = ref.read({{name.snake_case()}}LocalDataSourceProvider);
+{{name.pascalCase()}}LocalRepositoryImpl {{name.snakeCase()}}LocalRepositoryImpl(Ref ref) {
+  final localDataSource = ref.read({{name.snakeCase()}}LocalDataSourceProvider);
   return {{name.pascalCase()}}LocalRepositoryImpl(localDataSource: localDataSource);
 }

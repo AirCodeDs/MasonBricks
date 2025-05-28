@@ -1,14 +1,14 @@
 // Project imports:
-import 'package:urban_transport/features/{{name.snake_case()}}/data/models/{{name.snake_case()}}_model.dart';
+import 'package:urban_transport/features/{{name.snakeCase()}}/data/models/{{name.snakeCase()}}_model.dart';
 
 class {{name.pascalCase()}}State {
-  const {{name.pascalCase()}}State({this.{{name.snake_case()}}s = const [], this.errorMessage});
-  final List<{{name.pascalCase()}}Model> {{name.snake_case()}}s;
+  const {{name.pascalCase()}}State({this.{{name.snakeCase()}}s = const [], this.errorMessage});
+  final List<{{name.pascalCase()}}Model> {{name.snakeCase()}}s;
   final String? errorMessage;
 
-  {{name.pascalCase()}}State copyWith({List<{{name.pascalCase()}}Model>? {{name.snake_case()}}s, String? errorMessage}) =>
+  {{name.pascalCase()}}State copyWith({List<{{name.pascalCase()}}Model>? {{name.snakeCase()}}s, String? errorMessage}) =>
       {{name.pascalCase()}}State(
-        {{name.snake_case()}}s: {{name.snake_case()}}s ?? this.{{name.snake_case()}}s,
+        {{name.snakeCase()}}s: {{name.snakeCase()}}s ?? this.{{name.snakeCase()}}s,
         errorMessage: errorMessage,
       );
 }

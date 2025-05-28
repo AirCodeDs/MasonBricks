@@ -1,7 +1,7 @@
 // Package imports:
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-part '{{name.snake_case()}}_creation_provider.g.dart';
+part '{{name.snakeCase()}}_creation_provider.g.dart';
 
 @riverpod
 class {{name.pascalCase()}}CreationProvider extends _${{name.pascalCase()}}CreationProvider {

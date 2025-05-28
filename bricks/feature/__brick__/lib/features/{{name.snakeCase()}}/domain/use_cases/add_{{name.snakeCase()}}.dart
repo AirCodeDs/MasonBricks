@@ -5,8 +5,8 @@ import 'package:dartz/dartz.dart';
 import 'package:urban_transport/core/errors/failure.dart';
 import 'package:urban_transport/core/params/params.dart';
 import 'package:urban_transport/core/use_cases/use_case.dart';
-import 'package:urban_transport/features/{{name.snake_case()}}/data/models/{{name.snake_case()}}_model.dart';
-import 'package:urban_transport/features/{{name.snake_case()}}/domain/repositories/{{name.snake_case()}}_repository_interface.dart';
+import 'package:urban_transport/features/{{name.snakeCase()}}/data/models/{{name.snakeCase()}}_model.dart';
+import 'package:urban_transport/features/{{name.snakeCase()}}/domain/repositories/{{name.snakeCase()}}_repository_interface.dart';
 
 class Add{{name.pascalCase()}} extends UseCase<{{name.pascalCase()}}Model, Add{{name.pascalCase()}}Params> {
   Add{{name.pascalCase()}}(this._repository);

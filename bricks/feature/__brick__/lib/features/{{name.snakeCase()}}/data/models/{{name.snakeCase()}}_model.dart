@@ -4,8 +4,8 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 // Project imports:
 import 'package:urban_transport/core/utils/type_convertor/type_convertor.dart';
 
-part '{{name.snake_case()}}_model.freezed.dart';
-part '{{name.snake_case()}}_model.g.dart';
+part '{{name.snakeCase()}}_model.freezed.dart';
+part '{{name.snakeCase()}}_model.g.dart';
 
 @freezed
 abstract class {{name.pascalCase()}}Model with _${{name.pascalCase()}}Model {

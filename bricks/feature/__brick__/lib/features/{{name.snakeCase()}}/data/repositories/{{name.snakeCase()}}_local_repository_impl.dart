@@ -10,9 +10,9 @@ import 'package:urban_transport/core/errors/failure.dart';
 import 'package:urban_transport/core/params/params.dart';
 import 'package:urban_transport/core/utils/metadata/pagination_data_model.dart';
 import 'package:urban_transport/core/utils/type_convertor/type_convertor.dart';
-import 'package:urban_transport/features/{{name.snake_case()}}/data/data_sources/{{name.snake_case()}}_local_data_source.dart';
-import 'package:urban_transport/features/{{name.snake_case()}}/data/models/{{name.snake_case()}}_model.dart';
-import 'package:urban_transport/features/{{name.snake_case()}}/domain/repositories/{{name.snake_case()}}_repository_interface.dart';
+import 'package:urban_transport/features/{{name.snakeCase()}}/data/data_sources/{{name.snakeCase()}}_local_data_source.dart';
+import 'package:urban_transport/features/{{name.snakeCase()}}/data/models/{{name.snakeCase()}}_model.dart';
+import 'package:urban_transport/features/{{name.snakeCase()}}/domain/repositories/{{name.snakeCase()}}_repository_interface.dart';
 
 class {{name.pascalCase()}}LocalRepositoryImpl
     with Loggable
@@ -66,16 +66,16 @@ class {{name.pascalCase()}}LocalRepositoryImpl
       final response = await localDataSource.getAll{{name.pascalCase()}}s(noParams);
 
       if (response['success'] == true) {
-        final {{name.snake_case()}}s = TypeConvertor()
+        final {{name.snakeCase()}}s = TypeConvertor()
             .convertToListOfMaps(response['data']['data'] as List)
             .map({{name.pascalCase()}}Model.fromJson)
             .toList();
-        final {{name.snake_case()}}sWithPagination = PaginationDataModel.fromJson(
+        final {{name.snakeCase()}}sWithPagination = PaginationDataModel.fromJson(
           response['data']['pagination'],
-          {{name.snake_case()}}s,
+          {{name.snakeCase()}}s,
         );
 
-        return Right({{name.snake_case()}}sWithPagination);
+        return Right({{name.snakeCase()}}sWithPagination);
       } else {
         return Left(
           ServerFailure(errorMessage: response['message'].toString()),
