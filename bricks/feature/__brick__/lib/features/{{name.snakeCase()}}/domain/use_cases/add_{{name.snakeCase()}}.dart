@@ -2,11 +2,11 @@
 import 'package:dartz/dartz.dart';
 
 // Project imports:
-import 'package:{{name.snakeCase()}}/core/errors/failure.dart';
-import 'package:{{name.snakeCase()}}/core/params/params.dart';
-import 'package:{{name.snakeCase()}}/core/use_cases/use_case.dart';
-import 'package:{{name.snakeCase()}}/features/{{name.snakeCase()}}/data/models/{{name.snakeCase()}}_model.dart';
-import 'package:{{name.snakeCase()}}/features/{{name.snakeCase()}}/domain/repositories/{{name.snakeCase()}}_repository_interface.dart';
+import 'package:{{project_name.snakeCase()}}/core/errors/failure.dart';
+import 'package:{{project_name.snakeCase()}}/core/params/params.dart';
+import 'package:{{project_name.snakeCase()}}/core/use_cases/use_case.dart';
+import 'package:{{project_name.snakeCase()}}/features/{{name.snakeCase()}}/data/models/{{name.snakeCase()}}_model.dart';
+import 'package:{{project_name.snakeCase()}}/features/{{name.snakeCase()}}/domain/repositories/{{name.snakeCase()}}_repository_interface.dart';
 
 class Add{{name.pascalCase()}} extends UseCase<{{name.pascalCase()}}Model, Add{{name.pascalCase()}}Params> {
   Add{{name.pascalCase()}}(this._repository);

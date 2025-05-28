@@ -2,7 +2,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 // Project imports:
-import 'package:{{name.snakeCase()}}/core/utils/type_convertor/type_convertor.dart';
+import 'package:{{project_name.snakeCase()}}/core/utils/type_convertor/type_convertor.dart';
 
 part '{{name.snakeCase()}}_model.freezed.dart';
 part '{{name.snakeCase()}}_model.g.dart';
