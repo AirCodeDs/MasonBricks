@@ -5,10 +5,10 @@ import 'package:dartz/dartz.dart';
 import 'package:urban_transport/core/errors/failure.dart';
 import 'package:urban_transport/core/params/params.dart';
 import 'package:urban_transport/core/use_cases/use_case.dart';
-import 'package:urban_transport/features/{{name.snakecase()}}/data/models/{{name.snakecase()}}_model.dart';
+import 'package:urban_transport/features/{{name.snake_case()}}/data/models/{{name.snake_case()}}_model.dart';
 
 import 'package:urban_transport/core/utils/metadata/pagination_data_model.dart'; // Pour le type de retour
-import 'package:urban_transport/features/{{name.snakecase()}}/domain/repositories/{{name.snakecase()}}_repository_interface.dart'; // Pour le type de retour
+import 'package:urban_transport/features/{{name.snake_case()}}/domain/repositories/{{name.snake_case()}}_repository_interface.dart'; // Pour le type de retour
 
 class GetAll{{name.pascalCase()}}s
     implements UseCase<PaginationDataModel<List<{{name.pascalCase()}}Model>>, NoParams> {

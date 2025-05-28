@@ -2,7 +2,7 @@
 import 'package:urban_transport/config/logs/app_log.dart';
 import 'package:urban_transport/core/constants/api_url/api_url.dart';
 import 'package:urban_transport/core/params/params.dart';
-import 'package:urban_transport/features/{{name.snakecase()}}/domain/data_sources/{{name.snakecase()}}_data_source_interface.dart';
+import 'package:urban_transport/features/{{name.snake_case()}}/domain/data_sources/{{name.snake_case()}}_data_source_interface.dart';
 import 'package:urban_transport/services/api/remote_api/abstract/api_client.dart';
 
 class {{name.pascalCase()}}RemoteDataSource

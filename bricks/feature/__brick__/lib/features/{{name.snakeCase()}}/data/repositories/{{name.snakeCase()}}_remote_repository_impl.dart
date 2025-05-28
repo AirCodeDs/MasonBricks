@@ -10,9 +10,9 @@ import 'package:urban_transport/core/errors/failure.dart';
 import 'package:urban_transport/core/params/params.dart';
 import 'package:urban_transport/core/utils/metadata/pagination_data_model.dart';
 import 'package:urban_transport/core/utils/type_convertor/type_convertor.dart';
-import 'package:urban_transport/features/{{name.snakecase()}}/data/data_sources/{{name.snakecase()}}_remote_data_source.dart';
-import 'package:urban_transport/features/{{name.snakecase()}}/data/models/{{name.snakecase()}}_model.dart';
-import 'package:urban_transport/features/{{name.snakecase()}}/domain/repositories/{{name.snakecase()}}_repository_interface.dart';
+import 'package:urban_transport/features/{{name.snake_case()}}/data/data_sources/{{name.snake_case()}}_remote_data_source.dart';
+import 'package:urban_transport/features/{{name.snake_case()}}/data/models/{{name.snake_case()}}_model.dart';
+import 'package:urban_transport/features/{{name.snake_case()}}/domain/repositories/{{name.snake_case()}}_repository_interface.dart';
 
 class {{name.pascalCase()}}RemoteRepositoryImpl
     with Loggable
@@ -65,16 +65,16 @@ class {{name.pascalCase()}}RemoteRepositoryImpl
       final response = await remoteDataSource.getAll{{name.pascalCase()}}s(noParams);
 
       if (response['success'] == true) {
-        final {{name.snakecase()}}s = TypeConvertor()
+        final {{name.snake_case()}}s = TypeConvertor()
             .convertToListOfMaps(response['data']['data'] as List)
             .map({{name.pascalCase()}}Model.fromJson)
             .toList();
-        final {{name.snakecase()}}sWithPagination = PaginationDataModel.fromJson(
+        final {{name.snake_case()}}sWithPagination = PaginationDataModel.fromJson(
           response['data']['pagination'],
-          {{name.snakecase()}}s,
+          {{name.snake_case()}}s,
         );
 
-        return Right({{name.snakecase()}}sWithPagination);
+        return Right({{name.snake_case()}}sWithPagination);
       } else {
         return Left(
           ServerFailure(errorMessage: response['message'].toString()),

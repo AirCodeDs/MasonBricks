@@ -7,7 +7,7 @@ import 'package:urban_transport/core/errors/failure.dart';
 import 'package:urban_transport/core/params/params.dart';
 import 'package:urban_transport/core/use_cases/use_case.dart';
 
-import 'package:urban_transport/features/{{name.snakecase()}}/domain/repositories/{{name.snakecase()}}_repository_interface.dart'; // Assure-toi que le chemin est correct
+import 'package:urban_transport/features/{{name.snake_case()}}/domain/repositories/{{name.snake_case()}}_repository_interface.dart'; // Assure-toi que le chemin est correct
 
 class Delete{{name.pascalCase()}} implements UseCase<ApiResponse, Delete{{name.pascalCase()}}Params> {
   Delete{{name.pascalCase()}}(this._repository);

@@ -3,13 +3,13 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 // Project imports:
-import 'package:urban_transport/features/{{name.snakecase()}}/data/data_sources/{{name.snakecase()}}_remote_data_source.dart';
+import 'package:urban_transport/features/{{name.snake_case()}}/data/data_sources/{{name.snake_case()}}_remote_data_source.dart';
 import 'package:urban_transport/services/api/providers/api_provider.dart';
 
-part '{{name.snakecase()}}_remote_data_source_provider.g.dart';
+part '{{name.snake_case()}}_remote_data_source_provider.g.dart';
 
 @riverpod
-{{name.pascalCase()}}RemoteDataSource {{name.snakecase()}}RemoteDataSource(Ref ref) {
+{{name.pascalCase()}}RemoteDataSource {{name.snake_case()}}RemoteDataSource(Ref ref) {
   final apiClient = ref.read(apiClientProvider);
   return {{name.pascalCase()}}RemoteDataSource(apiClient: apiClient);
 }

@@ -6,7 +6,7 @@ import 'package:urban_transport/core/api_response/api_response.dart';
 import 'package:urban_transport/core/errors/failure.dart';
 import 'package:urban_transport/core/params/params.dart';
 import 'package:urban_transport/core/utils/metadata/pagination_data_model.dart';
-import 'package:urban_transport/features/{{name.snakecase()}}/data/models/{{name.snakecase()}}_model.dart';
+import 'package:urban_transport/features/{{name.snake_case()}}/data/models/{{name.snake_case()}}_model.dart';
 
 abstract class {{name.pascalCase()}}RepositoryInterface {
   Future<Either<Failure, {{name.pascalCase()}}Model>> add{{name.pascalCase()}}(FieldParams fieldParams);
