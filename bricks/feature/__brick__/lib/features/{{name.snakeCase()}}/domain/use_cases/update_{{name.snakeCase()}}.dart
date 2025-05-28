@@ -2,12 +2,12 @@
 import 'package:dartz/dartz.dart';
 
 // Project imports:
-import package:{{project_name.snakeCase()}}/core/errors/failure.dart';
-import package:{{project_name.snakeCase()}}/core/params/params.dart';
-import package:{{project_name.snakeCase()}}/core/use_cases/use_case.dart';
-import package:{{project_name.snakeCase()}}/features/{{name.snakeCase()}}/domain/repositories/{{name.snakeCase()}}_repository_interface.dart';
+import 'package:{{project_name.snakeCase()}}/core/errors/failure.dart';
+import 'package:{{project_name.snakeCase()}}/core/params/params.dart';
+import 'package:{{project_name.snakeCase()}}/core/use_cases/use_case.dart';
+import 'package:{{project_name.snakeCase()}}/features/{{name.snakeCase()}}/domain/repositories/{{name.snakeCase()}}_repository_interface.dart';
 
-import package:{{project_name.snakeCase()}}/features/{{name.snakeCase()}}/data/models/{{name.snakeCase()}}_model.dart'; // Pour le type de retour
+import 'package:{{project_name.snakeCase()}}/features/{{name.snakeCase()}}/data/models/{{name.snakeCase()}}_model.dart'; // Pour le type de retour
 
 class Update{{name.pascalCase()}} extends UseCase<{{name.pascalCase()}}Model, Update{{name.pascalCase()}}Params> {
   Update{{name.pascalCase()}}(this._repository);
