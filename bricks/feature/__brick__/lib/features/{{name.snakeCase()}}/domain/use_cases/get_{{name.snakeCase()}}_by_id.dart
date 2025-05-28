@@ -2,12 +2,12 @@
 import 'package:dartz/dartz.dart';
 
 // Project imports:
-import 'package:urban_transport/core/errors/failure.dart';
-import 'package:urban_transport/core/params/params.dart';
-import 'package:urban_transport/core/use_cases/use_case.dart';
-import 'package:urban_transport/features/{{name.snakeCase()}}/data/models/{{name.snakeCase()}}_model.dart';
+import 'package:{{name.snakeCase()}}/core/errors/failure.dart';
+import 'package:{{name.snakeCase()}}/core/params/params.dart';
+import 'package:{{name.snakeCase()}}/core/use_cases/use_case.dart';
+import 'package:{{name.snakeCase()}}/features/{{name.snakeCase()}}/data/models/{{name.snakeCase()}}_model.dart';
 
-import 'package:urban_transport/features/{{name.snakeCase()}}/domain/repositories/{{name.snakeCase()}}_repository_interface.dart'; // Pour le type de retour
+import 'package:{{name.snakeCase()}}/features/{{name.snakeCase()}}/domain/repositories/{{name.snakeCase()}}_repository_interface.dart'; // Pour le type de retour
 
 class Get{{name.pascalCase()}}ById extends UseCase<{{name.pascalCase()}}Model, Get{{name.pascalCase()}}ByIdParams> {
   Get{{name.pascalCase()}}ById(this._repository);

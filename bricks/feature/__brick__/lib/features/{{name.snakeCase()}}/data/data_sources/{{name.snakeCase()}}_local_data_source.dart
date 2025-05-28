@@ -1,8 +1,8 @@
 // Project imports:
-import 'package:urban_transport/config/logs/app_log.dart';
-import 'package:urban_transport/core/params/params.dart';
-import 'package:urban_transport/features/{{name.snakeCase()}}/domain/data_sources/{{name.snakeCase()}}_data_source_interface.dart';
-import 'package:urban_transport/services/api/local_api_client/local_api.dart';
+import 'package:{{name.snakeCase()}}/config/logs/app_log.dart';
+import 'package:{{name.snakeCase()}}/core/params/params.dart';
+import 'package:{{name.snakeCase()}}/features/{{name.snakeCase()}}/domain/data_sources/{{name.snakeCase()}}_data_source_interface.dart';
+import 'package:{{name.snakeCase()}}/services/api_client/local_api_client/local_api_client.dart';
 
 class {{name.pascalCase()}}LocalDataSource
     with Loggable

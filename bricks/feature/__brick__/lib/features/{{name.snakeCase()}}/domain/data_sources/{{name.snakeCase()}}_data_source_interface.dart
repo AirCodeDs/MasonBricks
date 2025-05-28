@@ -1,5 +1,5 @@
 // Project imports:
-import 'package:urban_transport/core/params/params.dart';
+import 'package:{{name.snakeCase()}}/core/params/params.dart';
 
 abstract class {{name.pascalCase()}}DataSourceInterface {
   Future<dynamic> add{{name.pascalCase()}}(FieldParams fieldParams);

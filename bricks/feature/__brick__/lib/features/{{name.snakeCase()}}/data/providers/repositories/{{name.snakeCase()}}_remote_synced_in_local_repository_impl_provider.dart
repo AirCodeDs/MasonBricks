@@ -3,10 +3,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 // Project imports:
-import 'package:urban_transport/core/network/network_info_provider.dart';
-import 'package:urban_transport/features/{{name.snakeCase()}}/data/providers/data_sources/{{name.snakeCase()}}_local_data_source_provider.dart';
-import 'package:urban_transport/features/{{name.snakeCase()}}/data/providers/data_sources/{{name.snakeCase()}}_remote_data_source_provider.dart';
-import 'package:urban_transport/features/{{name.snakeCase()}}/data/repositories/{{name.snakeCase()}}_remote_synced_in_local_repository_impl.dart';
+import 'package:{{name.snakeCase()}}/core/network/network_info_provider.dart';
+import 'package:{{name.snakeCase()}}/features/{{name.snakeCase()}}/data/providers/data_sources/{{name.snakeCase()}}_local_data_source_provider.dart';
+import 'package:{{name.snakeCase()}}/features/{{name.snakeCase()}}/data/providers/data_sources/{{name.snakeCase()}}_remote_data_source_provider.dart';
+import 'package:{{name.snakeCase()}}/features/{{name.snakeCase()}}/data/repositories/{{name.snakeCase()}}_remote_synced_in_local_repository_impl.dart';
 
 part '{{name.snakeCase()}}_remote_synced_in_local_repository_impl_provider.g.dart';
 

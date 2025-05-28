@@ -4,15 +4,15 @@
 import 'package:dartz/dartz.dart';
 
 // Project imports:
-import 'package:urban_transport/config/logs/app_log.dart';
-import 'package:urban_transport/core/api_response/api_response.dart';
-import 'package:urban_transport/core/errors/failure.dart';
-import 'package:urban_transport/core/params/params.dart';
-import 'package:urban_transport/core/utils/metadata/pagination_data_model.dart';
-import 'package:urban_transport/core/utils/type_convertor/type_convertor.dart';
-import 'package:urban_transport/features/{{name.snakeCase()}}/data/data_sources/{{name.snakeCase()}}_remote_data_source.dart';
-import 'package:urban_transport/features/{{name.snakeCase()}}/data/models/{{name.snakeCase()}}_model.dart';
-import 'package:urban_transport/features/{{name.snakeCase()}}/domain/repositories/{{name.snakeCase()}}_repository_interface.dart';
+import 'package:{{name.snakeCase()}}/config/logs/app_log.dart';
+import 'package:{{name.snakeCase()}}/core/api_response/api_response.dart';
+import 'package:{{name.snakeCase()}}/core/errors/failure.dart';
+import 'package:{{name.snakeCase()}}/core/params/params.dart';
+import 'package:{{name.snakeCase()}}/core/utils/metadata/pagination_data_model.dart';
+import 'package:{{name.snakeCase()}}/core/utils/type_convertor/type_convertor.dart';
+import 'package:{{name.snakeCase()}}/features/{{name.snakeCase()}}/data/data_sources/{{name.snakeCase()}}_remote_data_source.dart';
+import 'package:{{name.snakeCase()}}/features/{{name.snakeCase()}}/data/models/{{name.snakeCase()}}_model.dart';
+import 'package:{{name.snakeCase()}}/features/{{name.snakeCase()}}/domain/repositories/{{name.snakeCase()}}_repository_interface.dart';
 
 class {{name.pascalCase()}}RemoteRepositoryImpl
     with Loggable
