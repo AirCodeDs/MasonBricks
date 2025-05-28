@@ -82,7 +82,9 @@ class {{name.pascalCase()}}Notifier extends _${{name.pascalCase()}}Notifier {
         return Left(failure);
       },
       (success) {
-        fetch{{name.pascalCase()}}s();
+        final currentItems = state.value?.orders ?? [];
+        final newItems = [success, ...currentItems];
+        state = AsyncData(state.value!.copyWith(orders: newItems));
         return Right(success);
       },
     );
