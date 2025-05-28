@@ -1,8 +1,8 @@
 // Project imports:
-import 'package:{{name.snakeCase()}}/config/logs/app_log.dart';
-import 'package:{{name.snakeCase()}}/core/params/params.dart';
-import 'package:{{name.snakeCase()}}/features/{{name.snakeCase()}}/domain/data_sources/{{name.snakeCase()}}_data_source_interface.dart';
-import 'package:{{name.snakeCase()}}/services/api_client/mock_api_client/mock_api_client.dart';
+import package:{{project_name.snakeCase()}}/config/logs/app_log.dart';
+import package:{{project_name.snakeCase()}}/core/params/params.dart';
+import package:{{project_name.snakeCase()}}/features/{{name.snakeCase()}}/domain/data_sources/{{name.snakeCase()}}_data_source_interface.dart';
+import package:{{project_name.snakeCase()}}/services/api_client/mock_api_client/mock_api_client.dart';
 
 class {{name.pascalCase()}}MockDataSource
     with Loggable

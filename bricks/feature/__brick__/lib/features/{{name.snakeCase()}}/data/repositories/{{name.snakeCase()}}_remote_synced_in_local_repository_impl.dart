@@ -4,18 +4,18 @@
 import 'package:dartz/dartz.dart';
 
 // Project imports:
-import 'package:{{name.snakeCase()}}/config/logs/app_log.dart';
-import 'package:{{name.snakeCase()}}/core/api_response/api_response.dart';
-import 'package:{{name.snakeCase()}}/core/errors/failure.dart';
-import 'package:{{name.snakeCase()}}/core/network/netwok_info.dart';
-import 'package:{{name.snakeCase()}}/core/params/params.dart';
-import 'package:{{name.snakeCase()}}/core/utils/metadata/pagination_data_model.dart';
-import 'package:{{name.snakeCase()}}/core/utils/type_convertor/type_convertor.dart';
-import 'package:{{name.snakeCase()}}/features/{{name.snakeCase()}}/data/data_sources/{{name.snakeCase()}}_local_data_source.dart';
-import 'package:{{name.snakeCase()}}/features/{{name.snakeCase()}}/data/data_sources/{{name.snakeCase()}}_remote_data_source.dart';
-import 'package:{{name.snakeCase()}}/features/{{name.snakeCase()}}/data/models/{{name.snakeCase()}}_model.dart';
-import 'package:{{name.snakeCase()}}/features/{{name.snakeCase()}}/domain/data_sources/{{name.snakeCase()}}_data_source_interface.dart';
-import 'package:{{name.snakeCase()}}/features/{{name.snakeCase()}}/domain/repositories/{{name.snakeCase()}}_repository_interface.dart';
+import package:{{project_name.snakeCase()}}/config/logs/app_log.dart';
+import package:{{project_name.snakeCase()}}/core/api_response/api_response.dart';
+import package:{{project_name.snakeCase()}}/core/errors/failure.dart';
+import package:{{project_name.snakeCase()}}/core/network/netwok_info.dart';
+import package:{{project_name.snakeCase()}}/core/params/params.dart';
+import package:{{project_name.snakeCase()}}/core/utils/metadata/pagination_data_model.dart';
+import package:{{project_name.snakeCase()}}/core/utils/type_convertor/type_convertor.dart';
+import package:{{project_name.snakeCase()}}/features/{{name.snakeCase()}}/data/data_sources/{{name.snakeCase()}}_local_data_source.dart';
+import package:{{project_name.snakeCase()}}/features/{{name.snakeCase()}}/data/data_sources/{{name.snakeCase()}}_remote_data_source.dart';
+import package:{{project_name.snakeCase()}}/features/{{name.snakeCase()}}/data/models/{{name.snakeCase()}}_model.dart';
+import package:{{project_name.snakeCase()}}/features/{{name.snakeCase()}}/domain/data_sources/{{name.snakeCase()}}_data_source_interface.dart';
+import package:{{project_name.snakeCase()}}/features/{{name.snakeCase()}}/domain/repositories/{{name.snakeCase()}}_repository_interface.dart';
 
 class {{name.pascalCase()}}RemoteSyncedInLocalRepositoryImpl
     with Loggable

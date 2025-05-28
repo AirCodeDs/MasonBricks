@@ -3,18 +3,18 @@ import 'package:dartz/dartz.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 // Project imports:
-import 'package:{{name.snakeCase()}}/core/api_response/api_response.dart';
-import 'package:{{name.snakeCase()}}/core/errors/failure.dart';
-import 'package:{{name.snakeCase()}}/core/errors/failure_message_resolver.dart';
-import 'package:{{name.snakeCase()}}/core/utils/metadata/pagination_data_model.dart';
-import 'package:{{name.snakeCase()}}/features/{{name.snakeCase()}}/data/models/{{name.snakeCase()}}_model.dart';
-import 'package:{{name.snakeCase()}}/features/{{name.snakeCase()}}/data/providers/repositories/{{name.snakeCase()}}_remote_synced_in_local_repository_impl_provider.dart';
-import 'package:{{name.snakeCase()}}/features/{{name.snakeCase()}}/domain/use_cases/add_{{name.snakeCase()}}.dart';
-import 'package:{{name.snakeCase()}}/features/{{name.snakeCase()}}/domain/use_cases/delete_{{name.snakeCase()}}.dart';
-import 'package:{{name.snakeCase()}}/features/{{name.snakeCase()}}/domain/use_cases/get_all_{{name.snakeCase()}}s.dart';
-import 'package:{{name.snakeCase()}}/features/{{name.snakeCase()}}/domain/use_cases/get_{{name.snakeCase()}}_by_id.dart';
-import 'package:{{name.snakeCase()}}/features/{{name.snakeCase()}}/domain/use_cases/update_{{name.snakeCase()}}.dart';
-import 'package:{{name.snakeCase()}}/features/{{name.snakeCase()}}/presentation/providers/{{name.snakeCase()}}_state.dart';
+import package:{{project_name.snakeCase()}}/core/api_response/api_response.dart';
+import package:{{project_name.snakeCase()}}/core/errors/failure.dart';
+import package:{{project_name.snakeCase()}}/core/errors/failure_message_resolver.dart';
+import package:{{project_name.snakeCase()}}/core/utils/metadata/pagination_data_model.dart';
+import package:{{project_name.snakeCase()}}/features/{{name.snakeCase()}}/data/models/{{name.snakeCase()}}_model.dart';
+import package:{{project_name.snakeCase()}}/features/{{name.snakeCase()}}/data/providers/repositories/{{name.snakeCase()}}_remote_synced_in_local_repository_impl_provider.dart';
+import package:{{project_name.snakeCase()}}/features/{{name.snakeCase()}}/domain/use_cases/add_{{name.snakeCase()}}.dart';
+import package:{{project_name.snakeCase()}}/features/{{name.snakeCase()}}/domain/use_cases/delete_{{name.snakeCase()}}.dart';
+import package:{{project_name.snakeCase()}}/features/{{name.snakeCase()}}/domain/use_cases/get_all_{{name.snakeCase()}}s.dart';
+import package:{{project_name.snakeCase()}}/features/{{name.snakeCase()}}/domain/use_cases/get_{{name.snakeCase()}}_by_id.dart';
+import package:{{project_name.snakeCase()}}/features/{{name.snakeCase()}}/domain/use_cases/update_{{name.snakeCase()}}.dart';
+import package:{{project_name.snakeCase()}}/features/{{name.snakeCase()}}/presentation/providers/{{name.snakeCase()}}_state.dart';
 
 part '{{name.snakeCase()}}_provider.g.dart';
 
