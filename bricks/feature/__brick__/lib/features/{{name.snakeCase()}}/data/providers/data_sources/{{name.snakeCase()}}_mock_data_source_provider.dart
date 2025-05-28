@@ -10,6 +10,6 @@ part '{{name.snakeCase()}}_mock_data_source_provider.g.dart';
 
 @riverpod
 {{name.pascalCase()}}MockDataSource {{name.snakeCase()}}MockDataSource(Ref ref) {
-  final mockApi = ref.read(mockApiProvider);
-  return {{name.pascalCase()}}MockDataSource(mockApi: mockApi);
+  final mockApiClient = ref.read(mockApiClientProvider);
+  return {{name.pascalCase()}}MockDataSource(mockApiClient: mockApiClient);
 }

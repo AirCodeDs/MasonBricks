@@ -3,7 +3,7 @@ import 'package:urban_transport/config/logs/app_log.dart';
 import 'package:urban_transport/core/constants/api_url/api_url.dart';
 import 'package:urban_transport/core/params/params.dart';
 import 'package:urban_transport/features/{{name.snakeCase()}}/domain/data_sources/{{name.snakeCase()}}_data_source_interface.dart';
-import 'package:urban_transport/services/api/remote_api/abstract/api_client.dart';
+import 'package:urban_transport/services/api/remote_api_client/abstract/api_client.dart';
 
 class {{name.pascalCase()}}RemoteDataSource
     with Loggable

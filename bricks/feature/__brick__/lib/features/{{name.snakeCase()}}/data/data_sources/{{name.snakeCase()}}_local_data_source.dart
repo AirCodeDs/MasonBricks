@@ -2,13 +2,13 @@
 import 'package:urban_transport/config/logs/app_log.dart';
 import 'package:urban_transport/core/params/params.dart';
 import 'package:urban_transport/features/{{name.snakeCase()}}/domain/data_sources/{{name.snakeCase()}}_data_source_interface.dart';
-import 'package:urban_transport/services/api/local_api/local_api.dart';
+import 'package:urban_transport/services/api/local_api_client/local_api.dart';
 
 class {{name.pascalCase()}}LocalDataSource
     with Loggable
     implements {{name.pascalCase()}}DataSourceInterface {
-  {{name.pascalCase()}}LocalDataSource({required this.localApi});
-  final LocalApi localApi;
+  {{name.pascalCase()}}LocalDataSource({required this.localApiClient});
+  final LocalApiClient localApiClient;
 
   @override
   Future<dynamic> add{{name.pascalCase()}}(FieldParams fieldParams) async {
