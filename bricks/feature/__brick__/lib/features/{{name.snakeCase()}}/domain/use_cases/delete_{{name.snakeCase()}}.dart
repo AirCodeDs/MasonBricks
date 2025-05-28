@@ -7,20 +7,20 @@ import 'package:urban_transport/core/errors/failure.dart';
 import 'package:urban_transport/core/params/params.dart';
 import 'package:urban_transport/core/use_cases/use_case.dart';
 
-import 'package:urban_transport/features/product/domain/repositories/product_repository_interface.dart'; // Assure-toi que le chemin est correct
+import 'package:urban_transport/features/{{name.snakecase()}}/domain/repositories/{{name.snakecase()}}_repository_interface.dart'; // Assure-toi que le chemin est correct
 
-class DeleteProduct implements UseCase<ApiResponse, DeleteProductParams> {
-  DeleteProduct(this._repository);
-  final ProductRepositoryInterface _repository;
+class Delete{{name.pascalCase()}} implements UseCase<ApiResponse, Delete{{name.pascalCase()}}Params> {
+  Delete{{name.pascalCase()}}(this._repository);
+  final {{name.pascalCase()}}RepositoryInterface _repository;
 
   @override
   Future<Either<Failure, ApiResponse>> call(
-    DeleteProductParams deleteProductParams,
-  ) => _repository.deleteProduct(deleteProductParams);
+    Delete{{name.pascalCase()}}Params delete{{name.pascalCase()}}Params,
+  ) => _repository.delete{{name.pascalCase()}}(delete{{name.pascalCase()}}Params);
 }
 
-class DeleteProductParams extends UrlParams {
-  DeleteProductParams({
+class Delete{{name.pascalCase()}}Params extends UrlParams {
+  Delete{{name.pascalCase()}}Params({
     required String urlParam1,
     required String urlParam2,
     String? urlParam3,

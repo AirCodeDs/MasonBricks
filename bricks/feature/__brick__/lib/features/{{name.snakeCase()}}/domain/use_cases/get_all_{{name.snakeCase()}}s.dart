@@ -5,22 +5,22 @@ import 'package:dartz/dartz.dart';
 import 'package:urban_transport/core/errors/failure.dart';
 import 'package:urban_transport/core/params/params.dart';
 import 'package:urban_transport/core/use_cases/use_case.dart';
-import 'package:urban_transport/features/product/data/models/product_model.dart';
+import 'package:urban_transport/features/{{name.snakecase()}}/data/models/{{name.snakecase()}}_model.dart';
 
 import 'package:urban_transport/core/utils/metadata/pagination_data_model.dart'; // Pour le type de retour
-import 'package:urban_transport/features/product/domain/repositories/product_repository_interface.dart'; // Pour le type de retour
+import 'package:urban_transport/features/{{name.snakecase()}}/domain/repositories/{{name.snakecase()}}_repository_interface.dart'; // Pour le type de retour
 
-class GetAllProducts
-    implements UseCase<PaginationDataModel<List<ProductModel>>, NoParams> {
-  GetAllProducts(this._repository);
-  final ProductRepositoryInterface _repository;
+class GetAll{{name.pascalCase()}}s
+    implements UseCase<PaginationDataModel<List<{{name.pascalCase()}}Model>>, NoParams> {
+  GetAll{{name.pascalCase()}}s(this._repository);
+  final {{name.pascalCase()}}RepositoryInterface _repository;
 
   @override
-  Future<Either<Failure, PaginationDataModel<List<ProductModel>>>> call(
+  Future<Either<Failure, PaginationDataModel<List<{{name.pascalCase()}}Model>>>> call(
     NoParams noParams,
-  ) => _repository.getAllProducts(noParams);
+  ) => _repository.getAll{{name.pascalCase()}}s(noParams);
 }
 
-class GetAllProductParams extends NoParams {
-  GetAllProductParams({super.paginationPageIndex});
+class GetAll{{name.pascalCase()}}Params extends NoParams {
+  GetAll{{name.pascalCase()}}Params({super.paginationPageIndex});
 }

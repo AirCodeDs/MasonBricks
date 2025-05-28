@@ -6,16 +6,16 @@ import 'package:app_ui/app_ui.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class AdaptiveProductScreen extends StatelessWidget {
-  const AdaptiveProductScreen({super.key});
+class Adaptive{{name.pascalCase()}}Screen extends StatelessWidget {
+  const Adaptive{{name.pascalCase()}}Screen({super.key});
 
   @override
   Widget build(BuildContext context) =>
-      AdaptivePlatformUI.scaffold(body: const _ProductScreenBody());
+      AdaptivePlatformUI.scaffold(body: const _{{name.pascalCase()}}ScreenBody());
 }
 
-class _ProductScreenBody extends ConsumerWidget {
-  const _ProductScreenBody();
+class _{{name.pascalCase()}}ScreenBody extends ConsumerWidget {
+  const _{{name.pascalCase()}}ScreenBody();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -30,28 +30,28 @@ class _ProductScreenBody extends ConsumerWidget {
 }
 
 //STATEFUL VERSION
-// class AdaptiveProductScreen extends StatefulWidget {
-//   const AdaptiveProductScreen({super.key});
+// class Adaptive{{name.pascalCase()}}Screen extends StatefulWidget {
+//   const Adaptive{{name.pascalCase()}}Screen({super.key});
 
 //   @override
-//   State<AdaptiveProductScreen> createState() => _AdaptiveProductScreenState();
+//   State<Adaptive{{name.pascalCase()}}Screen> createState() => _Adaptive{{name.pascalCase()}}ScreenState();
 // }
 
-// class _AdaptiveProductScreenState extends State<AdaptiveProductScreen> {
+// class _Adaptive{{name.pascalCase()}}ScreenState extends State<Adaptive{{name.pascalCase()}}Screen> {
 //   @override
 //   Widget build(BuildContext context) => AdaptivePlatformUI.scaffold(
-//         body: const _ProductScreenBody(),
+//         body: const _{{name.pascalCase()}}ScreenBody(),
 //       );
 // }
 
-// class _ProductScreenBody extends ConsumerStatefulWidget {
-//   const _ProductScreenBody();
+// class _{{name.pascalCase()}}ScreenBody extends ConsumerStatefulWidget {
+//   const _{{name.pascalCase()}}ScreenBody();
 
 //   @override
-//   ConsumerState<_ProductScreenBody> createState() => _ProductScreenBodyState();
+//   ConsumerState<_{{name.pascalCase()}}ScreenBody> createState() => _{{name.pascalCase()}}ScreenBodyState();
 // }
 
-// class _ProductScreenBodyState extends ConsumerState<_ProductScreenBody> {
+// class _{{name.pascalCase()}}ScreenBodyState extends ConsumerState<_{{name.pascalCase()}}ScreenBody> {
 //   @override
 //   Widget build(BuildContext context) {
 //     // Exemple : final someData = ref.watch(someProvider);

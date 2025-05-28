@@ -10,25 +10,25 @@ import 'package:urban_transport/core/errors/failure.dart';
 import 'package:urban_transport/core/params/params.dart';
 import 'package:urban_transport/core/utils/metadata/pagination_data_model.dart';
 import 'package:urban_transport/core/utils/type_convertor/type_convertor.dart';
-import 'package:urban_transport/features/product/data/data_sources/product_remote_data_source.dart';
-import 'package:urban_transport/features/product/data/models/product_model.dart';
-import 'package:urban_transport/features/product/domain/repositories/product_repository_interface.dart';
+import 'package:urban_transport/features/{{name.snakecase()}}/data/data_sources/{{name.snakecase()}}_remote_data_source.dart';
+import 'package:urban_transport/features/{{name.snakecase()}}/data/models/{{name.snakecase()}}_model.dart';
+import 'package:urban_transport/features/{{name.snakecase()}}/domain/repositories/{{name.snakecase()}}_repository_interface.dart';
 
-class ProductRemoteRepositoryImpl
+class {{name.pascalCase()}}RemoteRepositoryImpl
     with Loggable
-    implements ProductRepositoryInterface {
-  ProductRemoteRepositoryImpl({required this.remoteDataSource});
-  final ProductRemoteDataSource remoteDataSource;
+    implements {{name.pascalCase()}}RepositoryInterface {
+  {{name.pascalCase()}}RemoteRepositoryImpl({required this.remoteDataSource});
+  final {{name.pascalCase()}}RemoteDataSource remoteDataSource;
 
   @override
-  Future<Either<Failure, ProductModel>> addProduct(
+  Future<Either<Failure, {{name.pascalCase()}}Model>> add{{name.pascalCase()}}(
     FieldParams fieldParams,
   ) async {
     try {
-      final response = await remoteDataSource.addProduct(fieldParams);
+      final response = await remoteDataSource.add{{name.pascalCase()}}(fieldParams);
 
       if (response['success'] == true) {
-        return Right(ProductModel.fromJson(response['data']));
+        return Right({{name.pascalCase()}}Model.fromJson(response['data']));
       } else {
         return Left(
           ServerFailure(errorMessage: response['message'].toString()),
@@ -40,11 +40,11 @@ class ProductRemoteRepositoryImpl
   }
 
   @override
-  Future<Either<Failure, ApiResponse>> deleteProduct(
+  Future<Either<Failure, ApiResponse>> delete{{name.pascalCase()}}(
     UrlParams urlParams,
   ) async {
     try {
-      final response = await remoteDataSource.deleteProduct(urlParams);
+      final response = await remoteDataSource.delete{{name.pascalCase()}}(urlParams);
 
       if (response['success'] == true) {
         return Right(ApiResponse(response['message']));
@@ -59,22 +59,22 @@ class ProductRemoteRepositoryImpl
   }
 
   @override
-  Future<Either<Failure, PaginationDataModel<List<ProductModel>>>>
-  getAllProducts(NoParams noParams) async {
+  Future<Either<Failure, PaginationDataModel<List<{{name.pascalCase()}}Model>>>>
+  getAll{{name.pascalCase()}}s(NoParams noParams) async {
     try {
-      final response = await remoteDataSource.getAllProducts(noParams);
+      final response = await remoteDataSource.getAll{{name.pascalCase()}}s(noParams);
 
       if (response['success'] == true) {
-        final products = TypeConvertor()
+        final {{name.snakecase()}}s = TypeConvertor()
             .convertToListOfMaps(response['data']['data'] as List)
-            .map(ProductModel.fromJson)
+            .map({{name.pascalCase()}}Model.fromJson)
             .toList();
-        final productsWithPagination = PaginationDataModel.fromJson(
+        final {{name.snakecase()}}sWithPagination = PaginationDataModel.fromJson(
           response['data']['pagination'],
-          products,
+          {{name.snakecase()}}s,
         );
 
-        return Right(productsWithPagination);
+        return Right({{name.snakecase()}}sWithPagination);
       } else {
         return Left(
           ServerFailure(errorMessage: response['message'].toString()),
@@ -86,14 +86,14 @@ class ProductRemoteRepositoryImpl
   }
 
   @override
-  Future<Either<Failure, ProductModel>> getProductById(
+  Future<Either<Failure, {{name.pascalCase()}}Model>> get{{name.pascalCase()}}ById(
     UrlParams urlParams,
   ) async {
     try {
-      final response = await remoteDataSource.getProductById(urlParams);
+      final response = await remoteDataSource.get{{name.pascalCase()}}ById(urlParams);
 
       if (response['success'] == true) {
-        return Right(ProductModel.fromJson(response['data']));
+        return Right({{name.pascalCase()}}Model.fromJson(response['data']));
       } else {
         return Left(
           ServerFailure(errorMessage: response['message'].toString()),
@@ -105,14 +105,14 @@ class ProductRemoteRepositoryImpl
   }
 
   @override
-  Future<Either<Failure, ProductModel>> updateProduct(
+  Future<Either<Failure, {{name.pascalCase()}}Model>> update{{name.pascalCase()}}(
     UrlAndFieldParams urlAndFieldParams,
   ) async {
     try {
-      final response = await remoteDataSource.updateProduct(urlAndFieldParams);
+      final response = await remoteDataSource.update{{name.pascalCase()}}(urlAndFieldParams);
 
       if (response['success'] == true) {
-        return Right(ProductModel.fromJson(response['data']));
+        return Right({{name.pascalCase()}}Model.fromJson(response['data']));
       } else {
         return Left(
           ServerFailure(errorMessage: response['message'].toString()),

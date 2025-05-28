@@ -1,14 +1,14 @@
 // Project imports:
-import 'package:urban_transport/features/product/data/models/product_model.dart';
+import 'package:urban_transport/features/{{name.snakecase()}}/data/models/{{name.snakecase()}}_model.dart';
 
-class ProductState {
-  const ProductState({this.products = const [], this.errorMessage});
-  final List<ProductModel> products;
+class {{name.pascalCase()}}State {
+  const {{name.pascalCase()}}State({this.{{name.snakecase()}}s = const [], this.errorMessage});
+  final List<{{name.pascalCase()}}Model> {{name.snakecase()}}s;
   final String? errorMessage;
 
-  ProductState copyWith({List<ProductModel>? products, String? errorMessage}) =>
-      ProductState(
-        products: products ?? this.products,
+  {{name.pascalCase()}}State copyWith({List<{{name.pascalCase()}}Model>? {{name.snakecase()}}s, String? errorMessage}) =>
+      {{name.pascalCase()}}State(
+        {{name.snakecase()}}s: {{name.snakecase()}}s ?? this.{{name.snakecase()}}s,
         errorMessage: errorMessage,
       );
 }

@@ -1,10 +1,10 @@
 // Project imports:
 import 'package:urban_transport/core/params/params.dart';
 
-abstract class ProductDataSourceInterface {
-  Future<dynamic> addProduct(FieldParams fieldParams);
-  Future<dynamic> updateProduct(UrlAndFieldParams urlAndFieldParams);
-  Future<dynamic> getAllProducts(NoParams noParams);
-  Future<dynamic> getProductById(UrlParams urlParams);
-  Future<dynamic> deleteProduct(UrlParams urlParams);
+abstract class {{name.pascalCase()}}DataSourceInterface {
+  Future<dynamic> add{{name.pascalCase()}}(FieldParams fieldParams);
+  Future<dynamic> update{{name.pascalCase()}}(UrlAndFieldParams urlAndFieldParams);
+  Future<dynamic> getAll{{name.pascalCase()}}s(NoParams noParams);
+  Future<dynamic> get{{name.pascalCase()}}ById(UrlParams urlParams);
+  Future<dynamic> delete{{name.pascalCase()}}(UrlParams urlParams);
 }

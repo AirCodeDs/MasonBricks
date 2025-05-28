@@ -1,10 +1,10 @@
 // Package imports:
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-part 'product_creation_provider.g.dart';
+part '{{name.snakecase()}}_creation_provider.g.dart';
 
 @riverpod
-class ProductCreationProvider extends _$ProductCreationProvider {
+class {{name.pascalCase()}}CreationProvider extends _${{name.pascalCase()}}CreationProvider {
   @override
   Map<String, dynamic> build() => {'name': ''};
 

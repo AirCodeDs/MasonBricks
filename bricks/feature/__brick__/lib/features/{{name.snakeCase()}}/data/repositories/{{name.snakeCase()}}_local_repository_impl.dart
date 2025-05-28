@@ -10,26 +10,26 @@ import 'package:urban_transport/core/errors/failure.dart';
 import 'package:urban_transport/core/params/params.dart';
 import 'package:urban_transport/core/utils/metadata/pagination_data_model.dart';
 import 'package:urban_transport/core/utils/type_convertor/type_convertor.dart';
-import 'package:urban_transport/features/product/data/data_sources/product_local_data_source.dart';
-import 'package:urban_transport/features/product/data/models/product_model.dart';
-import 'package:urban_transport/features/product/domain/repositories/product_repository_interface.dart';
+import 'package:urban_transport/features/{{name.snakecase()}}/data/data_sources/{{name.snakecase()}}_local_data_source.dart';
+import 'package:urban_transport/features/{{name.snakecase()}}/data/models/{{name.snakecase()}}_model.dart';
+import 'package:urban_transport/features/{{name.snakecase()}}/domain/repositories/{{name.snakecase()}}_repository_interface.dart';
 
-class ProductLocalRepositoryImpl
+class {{name.pascalCase()}}LocalRepositoryImpl
     with Loggable
-    implements ProductRepositoryInterface {
-  ProductLocalRepositoryImpl({required this.localDataSource});
+    implements {{name.pascalCase()}}RepositoryInterface {
+  {{name.pascalCase()}}LocalRepositoryImpl({required this.localDataSource});
 
-  final ProductLocalDataSource localDataSource;
+  final {{name.pascalCase()}}LocalDataSource localDataSource;
 
   @override
-  Future<Either<Failure, ProductModel>> addProduct(
+  Future<Either<Failure, {{name.pascalCase()}}Model>> add{{name.pascalCase()}}(
     FieldParams fieldParams,
   ) async {
     try {
-      final response = await localDataSource.addProduct(fieldParams);
+      final response = await localDataSource.add{{name.pascalCase()}}(fieldParams);
 
       if (response['success'] == true) {
-        return Right(ProductModel.fromJson(response['data']));
+        return Right({{name.pascalCase()}}Model.fromJson(response['data']));
       } else {
         return Left(
           ServerFailure(errorMessage: response['message'].toString()),
@@ -41,11 +41,11 @@ class ProductLocalRepositoryImpl
   }
 
   @override
-  Future<Either<Failure, ApiResponse>> deleteProduct(
+  Future<Either<Failure, ApiResponse>> delete{{name.pascalCase()}}(
     UrlParams urlParams,
   ) async {
     try {
-      final response = await localDataSource.deleteProduct(urlParams);
+      final response = await localDataSource.delete{{name.pascalCase()}}(urlParams);
 
       if (response['success'] == true) {
         return Right(ApiResponse(response['message']));
@@ -60,22 +60,22 @@ class ProductLocalRepositoryImpl
   }
 
   @override
-  Future<Either<Failure, PaginationDataModel<List<ProductModel>>>>
-  getAllProducts(NoParams noParams) async {
+  Future<Either<Failure, PaginationDataModel<List<{{name.pascalCase()}}Model>>>>
+  getAll{{name.pascalCase()}}s(NoParams noParams) async {
     try {
-      final response = await localDataSource.getAllProducts(noParams);
+      final response = await localDataSource.getAll{{name.pascalCase()}}s(noParams);
 
       if (response['success'] == true) {
-        final products = TypeConvertor()
+        final {{name.snakecase()}}s = TypeConvertor()
             .convertToListOfMaps(response['data']['data'] as List)
-            .map(ProductModel.fromJson)
+            .map({{name.pascalCase()}}Model.fromJson)
             .toList();
-        final productsWithPagination = PaginationDataModel.fromJson(
+        final {{name.snakecase()}}sWithPagination = PaginationDataModel.fromJson(
           response['data']['pagination'],
-          products,
+          {{name.snakecase()}}s,
         );
 
-        return Right(productsWithPagination);
+        return Right({{name.snakecase()}}sWithPagination);
       } else {
         return Left(
           ServerFailure(errorMessage: response['message'].toString()),
@@ -87,14 +87,14 @@ class ProductLocalRepositoryImpl
   }
 
   @override
-  Future<Either<Failure, ProductModel>> getProductById(
+  Future<Either<Failure, {{name.pascalCase()}}Model>> get{{name.pascalCase()}}ById(
     UrlParams urlParams,
   ) async {
     try {
-      final response = await localDataSource.getProductById(urlParams);
+      final response = await localDataSource.get{{name.pascalCase()}}ById(urlParams);
 
       if (response['success'] == true) {
-        return Right(ProductModel.fromJson(response['data']));
+        return Right({{name.pascalCase()}}Model.fromJson(response['data']));
       } else {
         return Left(
           ServerFailure(errorMessage: response['message'].toString()),
@@ -106,14 +106,14 @@ class ProductLocalRepositoryImpl
   }
 
   @override
-  Future<Either<Failure, ProductModel>> updateProduct(
+  Future<Either<Failure, {{name.pascalCase()}}Model>> update{{name.pascalCase()}}(
     UrlAndFieldParams urlAndFieldParams,
   ) async {
     try {
-      final response = await localDataSource.updateProduct(urlAndFieldParams);
+      final response = await localDataSource.update{{name.pascalCase()}}(urlAndFieldParams);
 
       if (response['success'] == true) {
-        return Right(ProductModel.fromJson(response['data']));
+        return Right({{name.pascalCase()}}Model.fromJson(response['data']));
       } else {
         return Left(
           ServerFailure(errorMessage: response['message'].toString()),

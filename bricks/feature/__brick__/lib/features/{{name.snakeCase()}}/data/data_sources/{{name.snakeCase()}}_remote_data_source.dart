@@ -2,19 +2,17 @@
 import 'package:urban_transport/config/logs/app_log.dart';
 import 'package:urban_transport/core/constants/api_url/api_url.dart';
 import 'package:urban_transport/core/params/params.dart';
-import 'package:urban_transport/features/product/domain/data_sources/product_data_source_interface.dart';
+import 'package:urban_transport/features/{{name.snakecase()}}/domain/data_sources/{{name.snakecase()}}_data_source_interface.dart';
 import 'package:urban_transport/services/api/remote_api/abstract/api_client.dart';
 
-class ProductRemoteDataSource
+class {{name.pascalCase()}}RemoteDataSource
     with Loggable
-    implements ProductDataSourceInterface {
-  ProductRemoteDataSource({
-    required this.apiClient,
-  });
+    implements {{name.pascalCase()}}DataSourceInterface {
+  {{name.pascalCase()}}RemoteDataSource({required this.apiClient});
   final ApiClient apiClient;
 
   @override
-  Future<dynamic> addProduct(FieldParams fieldParams) async {
+  Future<dynamic> add{{name.pascalCase()}}(FieldParams fieldParams) async {
     final response = await apiClient.init(
       path: ApiUrl.dev,
       requestType: RequestType.post,
@@ -24,7 +22,7 @@ class ProductRemoteDataSource
   }
 
   @override
-  Future<dynamic> updateProduct(UrlAndFieldParams urlAndFieldParams) async {
+  Future<dynamic> update{{name.pascalCase()}}(UrlAndFieldParams urlAndFieldParams) async {
     final response = await apiClient.init(
       path: ApiUrl.dev,
       requestType: RequestType.post,
@@ -34,7 +32,7 @@ class ProductRemoteDataSource
   }
 
   @override
-  Future<dynamic> getAllProducts(NoParams noParams) async {
+  Future<dynamic> getAll{{name.pascalCase()}}s(NoParams noParams) async {
     final response = await apiClient.init(
       path: ApiUrl.dev,
       requestType: RequestType.get,
@@ -43,7 +41,7 @@ class ProductRemoteDataSource
   }
 
   @override
-  Future<dynamic> getProductById(UrlParams urlParams) async {
+  Future<dynamic> get{{name.pascalCase()}}ById(UrlParams urlParams) async {
     final response = await apiClient.init(
       path: ApiUrl.dev,
       requestType: RequestType.get,
@@ -52,7 +50,7 @@ class ProductRemoteDataSource
   }
 
   @override
-  Future<dynamic> deleteProduct(UrlParams urlParams) async {
+  Future<dynamic> delete{{name.pascalCase()}}(UrlParams urlParams) async {
     final response = await apiClient.init(
       path: ApiUrl.dev,
       requestType: RequestType.delete,

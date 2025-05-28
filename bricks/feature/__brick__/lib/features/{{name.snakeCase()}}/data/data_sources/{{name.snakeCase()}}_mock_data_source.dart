@@ -1,43 +1,41 @@
 // Project imports:
 import 'package:urban_transport/config/logs/app_log.dart';
 import 'package:urban_transport/core/params/params.dart';
-import 'package:urban_transport/features/product/domain/data_sources/product_data_source_interface.dart';
+import 'package:urban_transport/features/{{name.snakecase()}}/domain/data_sources/{{name.snakecase()}}_data_source_interface.dart';
 import 'package:urban_transport/services/api/mock_api/mock_api.dart';
 
-class ProductMockDataSource
+class {{name.pascalCase()}}MockDataSource
     with Loggable
-    implements ProductDataSourceInterface {
-  ProductMockDataSource({
-    required this.mockApi,
-  });
+    implements {{name.pascalCase()}}DataSourceInterface {
+  {{name.pascalCase()}}MockDataSource({required this.mockApi});
   final MockApi mockApi;
 
   @override
-  Future<dynamic> addProduct(FieldParams fieldParams) async {
+  Future<dynamic> add{{name.pascalCase()}}(FieldParams fieldParams) async {
     final response = <String, dynamic>{};
     return response;
   }
 
   @override
-  Future<dynamic> updateProduct(UrlAndFieldParams urlAndFieldParams) async {
+  Future<dynamic> update{{name.pascalCase()}}(UrlAndFieldParams urlAndFieldParams) async {
     final response = <String, dynamic>{};
     return response;
   }
 
   @override
-  Future<dynamic> getAllProducts(NoParams noParams) async {
+  Future<dynamic> getAll{{name.pascalCase()}}s(NoParams noParams) async {
     final response = <String, dynamic>{};
     return response;
   }
 
   @override
-  Future<dynamic> getProductById(UrlParams urlParams) async {
+  Future<dynamic> get{{name.pascalCase()}}ById(UrlParams urlParams) async {
     final response = <String, dynamic>{};
     return response;
   }
 
   @override
-  Future<dynamic> deleteProduct(UrlParams urlParams) async {
+  Future<dynamic> delete{{name.pascalCase()}}(UrlParams urlParams) async {
     final response = <String, dynamic>{};
     return response;
   }

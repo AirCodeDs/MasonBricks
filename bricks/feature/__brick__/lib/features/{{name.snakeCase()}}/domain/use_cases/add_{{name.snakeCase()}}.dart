@@ -5,21 +5,21 @@ import 'package:dartz/dartz.dart';
 import 'package:urban_transport/core/errors/failure.dart';
 import 'package:urban_transport/core/params/params.dart';
 import 'package:urban_transport/core/use_cases/use_case.dart';
-import 'package:urban_transport/features/product/data/models/product_model.dart';
-import 'package:urban_transport/features/product/domain/repositories/product_repository_interface.dart';
+import 'package:urban_transport/features/{{name.snakecase()}}/data/models/{{name.snakecase()}}_model.dart';
+import 'package:urban_transport/features/{{name.snakecase()}}/domain/repositories/{{name.snakecase()}}_repository_interface.dart';
 
-class AddProduct extends UseCase<ProductModel, AddProductParams> {
-  AddProduct(this._repository);
-  final ProductRepositoryInterface _repository;
+class Add{{name.pascalCase()}} extends UseCase<{{name.pascalCase()}}Model, Add{{name.pascalCase()}}Params> {
+  Add{{name.pascalCase()}}(this._repository);
+  final {{name.pascalCase()}}RepositoryInterface _repository;
 
   @override
-  Future<Either<Failure, ProductModel>> call(
-    AddProductParams addProductParams,
-  ) => _repository.addProduct(addProductParams);
+  Future<Either<Failure, {{name.pascalCase()}}Model>> call(
+    Add{{name.pascalCase()}}Params add{{name.pascalCase()}}Params,
+  ) => _repository.add{{name.pascalCase()}}(add{{name.pascalCase()}}Params);
 }
 
-class AddProductParams extends FieldParams {
-  AddProductParams({
+class Add{{name.pascalCase()}}Params extends FieldParams {
+  Add{{name.pascalCase()}}Params({
     required String fieldParam1,
     required String fieldParam2,
     String? fieldParam3,
