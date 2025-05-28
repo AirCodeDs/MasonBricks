@@ -1,22 +1,19 @@
-// ignore_for_file: avoid_annotating_with_dynamic
+// Package imports:
+import 'package:freezed_annotation/freezed_annotation.dart';
 
 // Project imports:
-import 'package:{{project_name}}/core/utils/type_convertor/type_convertor.dart';
+import 'package:urban_transport/core/utils/type_convertor/type_convertor.dart';
 
-class {{name.pascalCase()}}Model {
-  {{name.pascalCase()}}Model({
-    required this.id,
-    // Add more attributes here as needed
-  });
+part 'product_model.freezed.dart';
+part 'product_model.g.dart';
 
-  factory {{name.pascalCase()}}Model.fromMap(dynamic json) {
-    final map = TypeConvertor().convertToMapStringDynamic(json);
-    return {{name.pascalCase()}}Model(
-      id: map['id'].toString(),
-      // Add more attributes here from map
-    );
-  }
+@freezed
+abstract class ProductModel with _$ProductModel {
+  const factory ProductModel({
+    required String id,
+  }) = _ProductModel;
 
-  final String id;
-  // Add more attributes here
+  // ignore: avoid_annotating_with_dynamic
+  factory ProductModel.fromJson(dynamic json) =>
+      _$ProductModelFromJson(TypeConvertor().convertToMapStringDynamic(json));
 }

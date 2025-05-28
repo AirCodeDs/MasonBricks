@@ -4,73 +4,67 @@
 import 'package:dartz/dartz.dart';
 
 // Project imports:
-import 'package:{{project_name}}/core/api_response/api_response.dart';
-import 'package:{{project_name}}/core/constants/error_text_string.dart';
-import 'package:{{project_name}}/core/errors/failure.dart';
-import 'package:{{project_name}}/core/network/netwok_info.dart';
-import 'package:{{project_name}}/core/params/params.dart';
-import 'package:{{project_name}}/core/utils/models/pagination_data_model.dart';
-import 'package:{{project_name}}/core/utils/type_convertor/type_convertor.dart';
-import 'package:{{project_name}}/features/{{name}}/data/data_sources/{{name.snakeCase()}}_remote_data_source.dart';
-import 'package:{{project_name}}/features/{{name}}/data/data_sources/{{name.snakeCase()}}_local_data_source.dart';
-import 'package:{{project_name}}/features/{{name}}/data/data_sources/{{name.snakeCase()}}_mock_data_source.dart';
-import 'package:{{project_name}}/features/{{name}}/data/models/{{name}}_model.dart';
-import 'package:{{project_name}}/features/{{name}}/domain/repositories/{{name}}_repository.dart';
-import 'package:{{project_name}}/features/{{name}}/data/data_sources/{{name.snakeCase()}}_data_source_interface.dart';
+import 'package:urban_transport/config/logs/app_log.dart';
+import 'package:urban_transport/core/api_response/api_response.dart';
+import 'package:urban_transport/core/errors/failure.dart';
+import 'package:urban_transport/core/network/netwok_info.dart';
+import 'package:urban_transport/core/params/params.dart';
+import 'package:urban_transport/core/utils/metadata/pagination_data_model.dart';
+import 'package:urban_transport/core/utils/type_convertor/type_convertor.dart';
+import 'package:urban_transport/features/product/data/data_sources/product_local_data_source.dart';
+import 'package:urban_transport/features/product/data/data_sources/product_remote_data_source.dart';
+import 'package:urban_transport/features/product/data/models/product_model.dart';
+import 'package:urban_transport/features/product/domain/data_sources/product_data_source_interface.dart';
+import 'package:urban_transport/features/product/domain/repositories/product_repository_interface.dart';
 
-class {{name.pascalCase()}}RemoteSyncedInLocalRepositoryImpl implements {{name.pascalCase()}}RepositoryInterface {
-  {{name.pascalCase()}}RemoteSyncedInLocalRepositoryImpl({
+class ProductRemoteSyncedInLocalRepositoryImpl
+    with Loggable
+    implements ProductRepositoryInterface {
+  ProductRemoteSyncedInLocalRepositoryImpl({
     required this.remoteDataSource,
     required this.localDataSource,
     required this.networkInfo,
   });
-  
-  final {{name.pascalCase()}}RemoteDataSource remoteDataSource;
-  final {{name.pascalCase()}}LocalDataSource localDataSource;
+
+  final ProductRemoteDataSource remoteDataSource;
+  final ProductLocalDataSource localDataSource;
   final NetworkInfo networkInfo;
 
-  {{name.pascalCase()}}DataSourceInterface _getDataSource() {
-   return networkInfo.isConnected? remoteDataSource : localDataSource;
+  Future<ProductDataSourceInterface> _getDataSource() async {
+    if (await networkInfo.isConnected) {
+      return remoteDataSource;
+    }
+    return localDataSource;
   }
 
   @override
-  Future<Either<Failure, {{name.pascalCase()}}Model>> add{{name.pascalCase()}}(
-    BodyParams bodyParams,
+  Future<Either<Failure, ProductModel>> addProduct(
+    FieldParams fieldParams,
   ) async {
     try {
-      final response = await remoteDataSource.add{{name.pascalCase()}}(
-        bodyParams,
-      );
-      
+      final response = await remoteDataSource.addProduct(fieldParams);
+
       if (response['success'] == true) {
-       return Right({{name.pascalCase()}}Model.fromMap(response['data']));
+        return Right(ProductModel.fromJson(response['data']));
       } else {
         return Left(
           ServerFailure(errorMessage: response['message'].toString()),
         );
       }
     } catch (e) {
-      final errorMsg = await ErrorText.errorMsg;
-      return Left(
-        ServerFailure(
-          errorMessage: errorMsg,
-        ),
-      );
+      return Left(UnexpectedFailure.withLog(e.toString()));
     }
   }
 
   @override
-  Future<Either<Failure, ApiResponse>> delete{{name.pascalCase()}}(UrlParams urlParams) async {
+  Future<Either<Failure, ApiResponse>> deleteProduct(
+    UrlParams urlParams,
+  ) async {
     try {
-     
-      final response = await remoteDataSource.delete{{name.pascalCase()}}(
-        urlParam,
-      );
-      
+      final response = await remoteDataSource.deleteProduct(urlParams);
+
       if (response['success'] == true) {
-       final response = await localDataSource.delete{{name.pascalCase()}}(
-        urlParam,
-       );
+        final response = await localDataSource.deleteProduct(urlParams);
         return Right(ApiResponse(response['message']));
       } else {
         return Left(
@@ -78,107 +72,75 @@ class {{name.pascalCase()}}RemoteSyncedInLocalRepositoryImpl implements {{name.p
         );
       }
     } catch (e) {
-      final errorMsg = await ErrorText.errorMsg;
-      return Left(
-        ServerFailure(
-          errorMessage: errorMsg,
-        ),
-      );
+      return Left(UnexpectedFailure.withLog(e.toString()));
     }
   }
 
   @override
-  Future<Either<Failure, PaginationDataModel<List<{{name.pascalCase()}}Model>>>> getAll{{name.pascalCase()}}s(
-    NoParams noParams,
-  ) async {
+  Future<Either<Failure, PaginationDataModel<List<ProductModel>>>>
+  getAllProducts(NoParams noParams) async {
     try {
-      final response = await _getDataSource.getAll{{name.pascalCase()}}s(
-        noParams,
-      );
-      
-      if (response['success'] == true) {
-        final {{name.camelCase()}}s = TypeConvertor()
-            .convertToListOfMaps(response['data']['data'] as List)
-            .map({{name.pascalCase()}}Model.fromMap)
-            .toList();
-        final {{name.camelCase()}}sWithPagination =
-            PaginationDataModel.fromMap(response['data']['pagination'], {{name.camelCase()}}s);
+      final dataSource = await _getDataSource();
+      final response = await dataSource.getAllProducts(noParams);
 
-        return Right({{name.camelCase()}}sWithPagination);
+      if (response['success'] == true) {
+        final products = TypeConvertor()
+            .convertToListOfMaps(response['data']['data'] as List)
+            .map(ProductModel.fromJson)
+            .toList();
+        final productsWithPagination = PaginationDataModel.fromJson(
+          response['data']['pagination'],
+          products,
+        );
+
+        return Right(productsWithPagination);
       } else {
         return Left(
           ServerFailure(errorMessage: response['message'].toString()),
         );
       }
     } catch (e) {
-      final errorMsg = await ErrorText.errorMsg;
-      return Left(
-        ServerFailure(
-          errorMessage: errorMsg,
-        ),
-      );
+      return Left(UnexpectedFailure.withLog(e.toString()));
     }
   }
 
   @override
-  Future<Either<Failure, {{name.pascalCase()}}Model>> get{{name.pascalCase()}}ById(
+  Future<Either<Failure, ProductModel>> getProductById(
     UrlParams urlParams,
   ) async {
     try {
-    
-      final response = await _getDataSource.get{{name.pascalCase()}}ById(
-        urlParam,
-      );
+      final dataSource = await _getDataSource();
+      final response = await dataSource.getProductById(urlParams);
 
       if (response['success'] == true) {
-         return Right({{name.pascalCase()}}Model.fromMap(response['data']));
+        return Right(ProductModel.fromJson(response['data']));
       } else {
         return Left(
           ServerFailure(errorMessage: response['message'].toString()),
         );
       }
     } catch (e) {
-      final errorMsg = await ErrorText.errorMsg;
-      return Left(
-        ServerFailure(
-          errorMessage: errorMsg,
-        ),
-      );
+      return Left(UnexpectedFailure.withLog(e.toString()));
     }
   }
 
   @override
-  Future<Either<Failure, {{name.pascalCase()}}Model>> update{{name.pascalCase()}}(
-    UrlAndBodyParams urlAndBodyParams,
+  Future<Either<Failure, ProductModel>> updateProduct(
+    UrlAndFieldParams urlAndFieldParams,
   ) async {
     try {
-      final response = await remoteDataSource.update{{name.pascalCase()}}(
-        urlAndBodyParams,
-      );
-      
+      final response = await remoteDataSource.updateProduct(urlAndFieldParams);
+
       if (response['success'] == true) {
-          final response = await localDataSource.update{{name.pascalCase()}}(
-            urlAndBodyParams,
-          );
-       return Right({{name.pascalCase()}}Model.fromMap(response['data']));
+        final response = await localDataSource.updateProduct(urlAndFieldParams);
+        return Right(ProductModel.fromJson(response['data']));
       } else {
         return Left(
           ServerFailure(errorMessage: response['message'].toString()),
         );
       }
     } catch (e) {
-      final errorMsg = await ErrorText.errorMsg;
-      return Left(
-        ServerFailure(
-          errorMessage: errorMsg,
-        ),
-      );
+      return Left(UnexpectedFailure.withLog(e.toString()));
     }
   }
 }
-
-
-
-
-
-

@@ -1,10 +1,10 @@
-import 'package:{{project_name}}/core/params/params.dart';
-import 'package:{{project_name}}/features/{{name.snakeCase()}}/domain/models/{{name.snakeCase()}}_model.dart';
+// Project imports:
+import 'package:urban_transport/core/params/params.dart';
 
-abstract class {{name.pascalCase()}}DataSource {
-  Future<dynamic> add{{name.pascalCase()}} (BodyParams bodyParams);
-  Future<dynamic> update{{name.pascalCase()}} (UrlAndBodyParams urlAndBodyParams);
-  Future<dynamic> getAll{{name.pascalCase()}}s (NoParams noParams);
-  Future<dynamic> get{{name.pascalCase()}}ById (UrlParams urlParams);
-  Future<dynamic> delete{{name.pascalCase()}} (UrlParams urlParams);
+abstract class ProductDataSourceInterface {
+  Future<dynamic> addProduct(FieldParams fieldParams);
+  Future<dynamic> updateProduct(UrlAndFieldParams urlAndFieldParams);
+  Future<dynamic> getAllProducts(NoParams noParams);
+  Future<dynamic> getProductById(UrlParams urlParams);
+  Future<dynamic> deleteProduct(UrlParams urlParams);
 }

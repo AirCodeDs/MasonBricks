@@ -1,54 +1,62 @@
-
-import 'package:{{project_name}}/config/logs/app_log.dart';
+// Project imports:
+import 'package:urban_transport/config/logs/app_log.dart';
 import 'package:urban_transport/core/constants/api_url/api_url.dart';
-import 'package:{{project_name}}/core/params/params.dart';
-import 'package:{{project_name}}/features/{{name.snakeCase()}}/domain/models/{{name.snakeCase()}}_model.dart';
-import 'package:{{project_name}}/services/api/remote_api/abstract/api_client.dart';
-import 'package:{{project_name}}/features/{{name}}/data/data_sources/{{name.snakeCase()}}_data_source_interface.dart';
+import 'package:urban_transport/core/params/params.dart';
+import 'package:urban_transport/features/product/domain/data_sources/product_data_source_interface.dart';
+import 'package:urban_transport/services/api/remote_api/abstract/api_client.dart';
 
-class {{name.pascalCase()}}RemoteDataSource with Loggable implements {{name.pascalCase()}}DataSourceInterface
-  {{name.pascalCase()}}RemoteDataSource(this.apiClient); 
-  final ApiClient apiClient; 
+class ProductRemoteDataSource
+    with Loggable
+    implements ProductDataSourceInterface {
+  ProductRemoteDataSource({
+    required this.apiClient,
+  });
+  final ApiClient apiClient;
 
-  Future<dynamic> add{{name.pascalCase()}} (BodyParams bodyParams) async {
-    final response = await apiClient.init( 
-      path: ApiUrl.dev, 
+  @override
+  Future<dynamic> addProduct(FieldParams fieldParams) async {
+    final response = await apiClient.init(
+      path: ApiUrl.dev,
       requestType: RequestType.post,
-      body: bodyParams.params,
+      body: fieldParams.fieldParams,
     );
     return response;
   }
 
-  Future<dynamic> update{{name.pascalCase()}} (UrlAndBodyParams urlAndBodyParams) async {
-    final response = await apiClient.init( 
-      path: ApiUrl.dev, 
+  @override
+  Future<dynamic> updateProduct(UrlAndFieldParams urlAndFieldParams) async {
+    final response = await apiClient.init(
+      path: ApiUrl.dev,
       requestType: RequestType.post,
-      body: urlAndBodyParams.params,
+      body: urlAndFieldParams.fieldParams,
     );
     return response;
   }
 
-  Future<dynamic> getAll{{name.pascalCase()}}s (NoParams noParams) async {
-    final response = await apiClient.init( 
-      path: ApiUrl.dev, 
+  @override
+  Future<dynamic> getAllProducts(NoParams noParams) async {
+    final response = await apiClient.init(
+      path: ApiUrl.dev,
       requestType: RequestType.get,
     );
     return response;
   }
-  
-  Future<dynamic> get{{name.pascalCase()}}ById (UrlParams urlParams) async {
-    final response = await apiClient.init( 
-      path: ApiUrl.dev, 
+
+  @override
+  Future<dynamic> getProductById(UrlParams urlParams) async {
+    final response = await apiClient.init(
+      path: ApiUrl.dev,
       requestType: RequestType.get,
     );
     return response;
   }
 
-  Future<dynamic> delete{{name.pascalCase()}} (UrlParams urlParams) async {
-    final response = await apiClient.init( 
-      path: ApiUrl.dev, 
+  @override
+  Future<dynamic> deleteProduct(UrlParams urlParams) async {
+    final response = await apiClient.init(
+      path: ApiUrl.dev,
       requestType: RequestType.delete,
-    ); 
+    );
     return response;
   }
 }
