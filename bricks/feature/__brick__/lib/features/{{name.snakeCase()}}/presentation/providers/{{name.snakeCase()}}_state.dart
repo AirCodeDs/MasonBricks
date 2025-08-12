@@ -1,14 +1,23 @@
-// Project imports:
-import 'package:{{project_name.snakeCase()}}/features/{{name.snakeCase()}}/data/models/{{name.snakeCase()}}_model.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:{{project_name}}/features/{{name.snakeCase()}}/domain/entities/{{name.snakeCase()}}.dart';
 
-class {{name.pascalCase()}}State {
-  const {{name.pascalCase()}}State({this.{{name.snakeCase()}}s = const [], this.errorMessage});
-  final List<{{name.pascalCase()}}Model> {{name.snakeCase()}}s;
-  final String? errorMessage;
+part '{{name.snakeCase()}}_state.freezed.dart';
 
-  {{name.pascalCase()}}State copyWith({List<{{name.pascalCase()}}Model>? {{name.snakeCase()}}s, String? errorMessage}) =>
-      {{name.pascalCase()}}State(
-        {{name.snakeCase()}}s: {{name.snakeCase()}}s ?? this.{{name.snakeCase()}}s,
-        errorMessage: errorMessage,
-      );
+enum {{name.pascalCase()}}Operation {
+  fetch{{name.pascalCase()}}s,
+  add{{name.pascalCase()}},
+  update{{name.pascalCase()}},
+  delete{{name.pascalCase()}},
+  get{{name.pascalCase()}}ById,
+}
+
+enum OperationStatus { idle, loading, success, error }
+
+@freezed
+abstract class {{name.pascalCase()}}State with _${{name.pascalCase()}}State {
+  const factory {{name.pascalCase()}}State({
+    @Default([]) List<{{name.pascalCase()}}> {{name.snakeCase()}}s,
+    @Default({}) Map<{{name.pascalCase()}}Operation, OperationStatus> operationStatuses,
+    @Default({}) Map<{{name.pascalCase()}}Operation, String?> errors,
+  }) = _{{name.pascalCase()}}State;
 }
