@@ -1,8 +1,7 @@
-import 'dart:async';
-import 'package:{{project_name}}/core/logging/app_log.dart';
-import 'package:{{project_name}}/core/api_response/api_response.dart';
-import 'package:{{project_name}}/core/params/params.dart';
-import 'package:{{project_name}}/core/models/metadata/pagination_data_model.dart';
+// Package imports:
+import 'package:app_core_kit/app_core_kit.dart';
+
+// Project imports:
 import 'package:{{project_name}}/features/{{name.snakeCase()}}/data/repositories/base_{{name.snakeCase()}}_repository/base_{{name.snakeCase()}}_data_reader_repository.dart';
 import 'package:{{project_name}}/features/{{name.snakeCase()}}/data/contracts/{{name.snakeCase()}}_data_source.dart';
 import 'package:{{project_name}}/features/{{name.snakeCase()}}/domain/entities/{{name.snakeCase()}}.dart';

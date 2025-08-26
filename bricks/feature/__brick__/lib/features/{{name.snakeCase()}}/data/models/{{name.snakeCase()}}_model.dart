@@ -1,9 +1,8 @@
-// Package imports:
 // ignore_for_file: avoid_print, inference_failure_on_untyped_parameter
 
+// Package imports:
+import 'package:app_core_kit/app_core_kit.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:{{project_name}}/core/converters/freezed_converters.dart';
-import 'package:{{project_name}}/core/converters/type_convertor.dart';
 
 // Project imports:
 

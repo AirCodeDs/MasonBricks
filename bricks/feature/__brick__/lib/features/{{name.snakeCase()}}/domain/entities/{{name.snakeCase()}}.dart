@@ -1,5 +1,3 @@
-/// Domain entity representing a {{name.snakeCase()}}.
-/// Pure business data; no framework or transport concerns.
 class {{name.pascalCase()}} {
   const {{name.pascalCase()}}({
     required this.id,
@@ -8,11 +6,10 @@ class {{name.pascalCase()}} {
     required this.category,
     required this.price,
   });
+
   final String id;
   final String name;
   final String description;
   final String category;
   final double price;
 }
-
-

@@ -1,6 +1,9 @@
 // ignore_for_file: avoid_dynamic_calls
 
-import 'package:{{project_name}}/core/api_response/api_response.dart';
+// Package imports:
+import 'package:app_core_kit/app_core_kit.dart';
+
+// Project imports:
 import 'package:{{project_name}}/features/{{name.snakeCase()}}/data/repositories/base_{{name.snakeCase()}}_repository/base_{{name.snakeCase()}}_data_reader_repository.dart';
 import 'package:{{project_name}}/features/{{name.snakeCase()}}/data/contracts/{{name.snakeCase()}}_data_source.dart';
 import 'package:{{project_name}}/features/{{name.snakeCase()}}/domain/entities/{{name.snakeCase()}}.dart';

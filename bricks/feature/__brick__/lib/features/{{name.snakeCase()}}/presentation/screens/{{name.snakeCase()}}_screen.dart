@@ -1,17 +1,23 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:app_ui_kit/app_ui_kit.dart';
+import 'package:app_widgets_kit/app_widgets_kit.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
-import 'package:{{project_name}}/features/{{name.snakeCase()}}/providers/use_cases/add_{{name.snakeCase()}}_provider.dart';
+
+// Project imports:
+import 'package:{{project_name}}/features/{{name.snakeCase()}}/application/state/{{name.snakeCase()}}_state.dart';
+import 'package:{{project_name}}/features/{{name.snakeCase()}}/application/state/{{name.snakeCase()}}_state_extension.dart';
 import 'package:{{project_name}}/features/{{name.snakeCase()}}/presentation/providers/notifier/{{name.snakeCase()}}_notifier.dart';
-import 'package:{{project_name}}/features/{{name.snakeCase()}}/presentation/providers/state/{{name.snakeCase()}}_state.dart';
-import 'package:{{project_name}}/features/{{name.snakeCase()}}/presentation/providers/state/{{name.snakeCase()}}_state_extension.dart';
+import 'package:{{project_name}}/features/{{name.snakeCase()}}/providers/use_cases/add_{{name.snakeCase()}}_provider.dart';
 import 'package:{{project_name}}/features/{{name.snakeCase()}}/presentation/screens/states_views/{{name.snakeCase()}}_empty_view.dart';
 import 'package:{{project_name}}/features/{{name.snakeCase()}}/presentation/screens/states_views/{{name.snakeCase()}}_error_view.dart';
 import 'package:{{project_name}}/features/{{name.snakeCase()}}/presentation/screens/states_views/{{name.snakeCase()}}_loading_view.dart';
-import 'package:{{project_name}}/features/{{name.snakeCase()}}/presentation/screens/widgets/{{name.snakeCase()}}_list_view.dart';
 import 'package:{{project_name}}/features/{{name.snakeCase()}}/presentation/screens/states_views/util.dart';
+import 'package:{{project_name}}/features/{{name.snakeCase()}}/presentation/screens/widgets/{{name.snakeCase()}}_list_view.dart';
 
 class Adaptive{{name.pascalCase()}}Screen extends StatelessWidget {
   const Adaptive{{name.pascalCase()}}Screen({super.key});
@@ -49,7 +55,7 @@ class _{{name.pascalCase()}}ScreenBody extends StatelessWidget {
     }
 
     if (state.isSuccessFetch{{name.pascalCase()}}s) {
-      return state.isItemsEmpty
+      return state.is{{name.pascalCase()}}sEmpty
           ? Empty{{name.pascalCase()}}View(state: state)
           : {{name.pascalCase()}}ListView(state: state, ref: ref);
     }

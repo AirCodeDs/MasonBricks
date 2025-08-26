@@ -64,7 +64,7 @@ class Base{{name.pascalCase()}}CoreDataSource
             .toList();
         final items = const {{name.pascalCase()}}Mapper().toEntityList(models);
         final meta = TypeConvertor().convertToMapStringDynamic(map['pagination']);
-        return PaginationDataModel<List<{{name.pascalCase()}}>>.fromJson(meta, items);
+        return Page<List<{{name.pascalCase()}}>>.fromJson(meta, items);
       },
     );
   }
@@ -74,7 +74,7 @@ class Base{{name.pascalCase()}}CoreDataSource
     UrlParams urlParams,
   ) async {
     final response = await apiClient.request(
-      path: ApiUrl.{{name.camelCase()}}.byId(urlParams.params.first),
+      path: ApiUrl.{{name.camelCase()}}.byId(urlParams.urlParams.first),
       requestType: RequestType.get,
     );
 
@@ -87,7 +87,7 @@ class Base{{name.pascalCase()}}CoreDataSource
   @override
   Future<ApiResponse<void>> delete{{name.pascalCase()}}(UrlParams urlParams) async {
     final response = await apiClient.request(
-      path: ApiUrl.{{name.camelCase()}}.byId(urlParams.params.first),
+      path: ApiUrl.{{name.camelCase()}}.byId(urlParams.urlParams.first),
       requestType: RequestType.delete,
     );
 

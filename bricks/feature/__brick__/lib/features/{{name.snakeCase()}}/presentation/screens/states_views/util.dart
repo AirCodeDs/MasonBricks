@@ -1,3 +1,4 @@
+// Dart imports:
 import 'dart:math';
 
 Map<String, dynamic> generateFake{{name.pascalCase()}}() {

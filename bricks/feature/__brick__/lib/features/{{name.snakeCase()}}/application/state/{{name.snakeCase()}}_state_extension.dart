@@ -72,7 +72,7 @@ extension {{name.pascalCase()}}StateFlags on {{name.pascalCase()}}State {
       operationStatuses[{{name.pascalCase()}}Operation.fetch{{name.pascalCase()}}s] == OperationStatus.success;
   bool get isErrorFetch{{name.pascalCase()}}s =>
       operationStatuses[{{name.pascalCase()}}Operation.fetch{{name.pascalCase()}}s] == OperationStatus.error;
-  bool get isItemsEmpty => {{name.snakeCase()}}s.isEmpty;
+  bool get is{{name.pascalCase()}}sEmpty => {{name.snakeCase()}}s.isEmpty;
   String? get errorFetch{{name.pascalCase()}}s => errors[{{name.pascalCase()}}Operation.fetch{{name.pascalCase()}}s];
 
   bool get isLoadingUpdate{{name.pascalCase()}} =>

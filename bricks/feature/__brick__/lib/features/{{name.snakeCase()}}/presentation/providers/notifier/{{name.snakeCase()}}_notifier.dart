@@ -1,8 +1,11 @@
+// Dart imports:
 import 'dart:async';
+
+// Package imports:
 import 'package:app_core_kit/app_core_kit.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:{{project_name}}/core/models/metadata/pagination_data_model.dart';
-import 'package:{{project_name}}/core/providers/network/network_info_provider.dart';
+
+// Project imports:
 import 'package:{{project_name}}/features/{{name.snakeCase()}}/application/state/{{name.snakeCase()}}_state_extension.dart';
 import 'package:{{project_name}}/features/{{name.snakeCase()}}/application/state/{{name.snakeCase()}}_state.dart';
 import 'package:{{project_name}}/features/{{name.snakeCase()}}/application/commands/add_{{name.snakeCase()}}_command.dart';
@@ -31,7 +34,7 @@ class {{name.pascalCase()}}Notifier extends _${{name.pascalCase()}}Notifier {
   late final Sync{{name.pascalCase()}}s _sync{{name.pascalCase()}}s;
   late final GetAll{{name.pascalCase()}}s _getSync{{name.pascalCase()}}s;
 
-  PaginationDataModel<List<{{name.pascalCase()}}>>? _paginationData;
+  Page<List<{{name.pascalCase()}}>>? _paginationData;
 
   @override
   {{name.pascalCase()}}State build() {

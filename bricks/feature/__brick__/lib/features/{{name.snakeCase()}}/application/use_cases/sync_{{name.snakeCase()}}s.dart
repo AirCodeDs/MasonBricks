@@ -5,7 +5,7 @@ import 'package:app_core_kit/app_core_kit.dart';
 import 'package:{{project_name}}/features/{{name.snakeCase()}}/domain/entities/{{name.snakeCase()}}.dart';
 import 'package:{{project_name}}/features/{{name.snakeCase()}}/domain/repositories/{{name.snakeCase()}}_repository.dart';
 
-class Sync{{name.pascalCase()}}s extends UseCase<void, Sync{{name.pascalCase()}}sParams> {
+class Sync{{name.pascalCase()}}s implements UseCase<void, Sync{{name.pascalCase()}}sParams> {
   Sync{{name.pascalCase()}}s(this._repository);
   final {{name.pascalCase()}}SyncRepository _repository;
 
