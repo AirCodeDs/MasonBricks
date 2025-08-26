@@ -1,14 +1,14 @@
-import 'package:app_ui/app_ui.dart';
+import 'package:app_ui_kit/app_ui_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
-import 'package:{{project_name}}/services/toast/app_toast_service.dart';
+import 'package:app_widgets_kit/app_widgets_kit.dart';
 import 'package:{{project_name}}/features/{{name.snakeCase()}}/application/use_cases/delete_{{name.snakeCase()}}.dart';
 import 'package:{{project_name}}/features/{{name.snakeCase()}}/application/use_cases/update_{{name.snakeCase()}}.dart';
-import 'package:{{project_name}}/features/{{name.snakeCase()}}/presentation/providers/notifier/{{name.snakeCase()}}_notifier.dart';
-import 'package:{{project_name}}/features/{{name.snakeCase()}}/presentation/providers/state/{{name.snakeCase()}}_state.dart';
-import 'package:{{project_name}}/features/{{name.snakeCase()}}/presentation/providers/state/{{name.snakeCase()}}_state_extension.dart';
+import 'package:{{project_name}}/features/{{name.snakeCase()}}/presentation/providers/notifier/product_notifier.dart';
+import 'package:{{project_name}}/features/{{name.snakeCase()}}/application/state/{{name.snakeCase()}}_state.dart';
+import 'package:{{project_name}}/features/{{name.snakeCase()}}/application/state/{{name.snakeCase()}}_state_extension.dart';
 import 'package:{{project_name}}/features/{{name.snakeCase()}}/presentation/screens/states_views/util.dart' as state_util;
 import 'package:{{project_name}}/widgets/spaced_widgets/spaced_column.dart';
 
@@ -79,11 +79,9 @@ class {{name.pascalCase()}}ListView extends StatelessWidget {
                             .update{{name.pascalCase()}}(params);
 
                         if (state.isSuccessUpdate{{name.pascalCase()}}) {
-                          AppToastService.success(
-                            '{{name.snakeCase()}} updated successfully',
-                          );
+                          AppToast.success('Updated successfully');
                         } else if (state.isErrorUpdate{{name.pascalCase()}}) {
-                          AppToastService.error('failed to update {{name.snakeCase()}}');
+                          AppToast.error('Failed to update');
                         }
                       },
                       text: 'Update',
@@ -100,11 +98,9 @@ class {{name.pascalCase()}}ListView extends StatelessWidget {
                             .read({{name.camelCase()}}NotifierProvider.notifier)
                             .delete{{name.pascalCase()}}(params);
                         if (state.isSuccessDelete{{name.pascalCase()}}) {
-                          AppToastService.success(
-                            '{{name.snakeCase()}} deleted successfully',
-                          );
+                          AppToast.success('Deleted successfully');
                         } else if (state.isErrorDelete{{name.pascalCase()}}) {
-                          AppToastService.error('failed to delete {{name.snakeCase()}}');
+                          AppToast.error('Failed to delete');
                         }
                       },
                       text: 'Delete',

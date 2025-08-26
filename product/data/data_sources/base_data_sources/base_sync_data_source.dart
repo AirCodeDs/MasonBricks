@@ -1,15 +1,12 @@
-import 'package:urban_transport/core/logging/app_log.dart';
-import 'package:urban_transport/core/api_response/api_response.dart';
-import 'package:urban_transport/core/api_response/api_response_util/api_response_handler.dart';
-import 'package:urban_transport/core/constants/request_type/request_type.dart';
-import 'package:urban_transport/core/converters/type_convertor.dart';
-import 'package:urban_transport/core/models/metadata/pagination_data_model.dart';
-import 'package:urban_transport/core/params/params.dart';
-import 'package:urban_transport/features/product/data/mappers/product_mapper.dart';
-import 'package:urban_transport/features/product/data/models/product_model.dart';
-import 'package:urban_transport/features/product/data/contracts/product_data_source.dart';
-import 'package:urban_transport/features/product/domain/entities/product.dart';
-import 'package:urban_transport/services/api_client/sync_api_client/sync_api_client.dart';
+// Package imports:
+import 'package:app_core_kit/app_core_kit.dart';
+import 'package:app_services/app_services.dart';
+
+// Project imports:
+import 'package:hbh_connect/features/product/data/contracts/product_data_source.dart';
+import 'package:hbh_connect/features/product/data/mappers/product_mapper.dart';
+import 'package:hbh_connect/features/product/data/models/product_model.dart';
+import 'package:hbh_connect/features/product/domain/entities/product.dart';
 
 class BaseProductSyncDataSource
     with Loggable, ApiResponseHandlerMixin
@@ -47,18 +44,14 @@ class BaseProductSyncDataSource
   }
 
   @override
-  Future<ApiResponse<void>> syncProducts(
-    List<Product> products,
-  ) async {
+  Future<ApiResponse<void>> syncProducts(List<Product> products) async {
     final productModels = const ProductMapper().toModelList(products);
     final productsAsList = productModels.map((el) => el.toJson()).toList();
     try {
       await syncApiClient.request(
         path: productBoxKey,
         requestType: RequestType.post,
-        body: {
-          'data': productsAsList,
-        },
+        body: {'data': productsAsList},
         isListMap: true,
         addAll: true,
       );

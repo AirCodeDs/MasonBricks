@@ -1,12 +1,12 @@
 // Package imports:
+import 'package:app_core_kit/app_core_kit.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 // Project imports:
-import 'package:urban_transport/core/providers/flavor/app_flavor_provider.dart';
-import 'package:urban_transport/features/product/providers/repositories/product_mock_repository_provider.dart';
-import 'package:urban_transport/features/product/providers/repositories/product_remote_repository_provider.dart';
-import 'package:urban_transport/features/product/domain/repositories/product_repository.dart';
+import 'package:hbh_connect/features/product/domain/repositories/product_repository.dart';
+import 'package:hbh_connect/features/product/providers/repositories/product_mock_repository_provider.dart';
+import 'package:hbh_connect/features/product/providers/repositories/product_http_rest_repository_provider.dart';
 
 part 'product_repository_provider.g.dart';
 
@@ -16,5 +16,5 @@ ProductRepository productRepository(Ref ref) {
   if (isMockFlavor) {
     return ref.read(productMockRepositoryProvider);
   }
-  return ref.read(productRemoteRepositoryProvider);
+  return ref.read(productHttpRestRepositoryProvider);
 }

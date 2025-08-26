@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:app_ui/app_ui.dart';
+import 'package:app_ui_kit/app_ui_kit.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
-import 'package:{{project_name}}/features/{{name.snakeCase()}}/application/use_cases/add_{{name.snakeCase()}}.dart';
+import 'package:{{project_name}}/features/{{name.snakeCase()}}/providers/use_cases/add_{{name.snakeCase()}}_provider.dart';
 import 'package:{{project_name}}/features/{{name.snakeCase()}}/presentation/providers/notifier/{{name.snakeCase()}}_notifier.dart';
 import 'package:{{project_name}}/features/{{name.snakeCase()}}/presentation/providers/state/{{name.snakeCase()}}_state.dart';
 import 'package:{{project_name}}/features/{{name.snakeCase()}}/presentation/providers/state/{{name.snakeCase()}}_state_extension.dart';

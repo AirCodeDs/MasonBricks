@@ -1,10 +1,10 @@
-// Project imports:
-import 'package:urban_transport/core/api_response/api_response.dart';
-import 'package:urban_transport/core/params/params.dart';
-import 'package:urban_transport/core/interfaces/use_case.dart';
-import 'package:urban_transport/features/product/domain/entities/product.dart';
+// Package imports:
+import 'package:app_core_kit/app_core_kit.dart';
 
-import 'package:urban_transport/features/product/domain/repositories/product_repository.dart'; // Pour le type de retour
+// Project imports:
+import 'package:hbh_connect/features/product/domain/entities/product.dart';
+
+import 'package:hbh_connect/features/product/domain/repositories/product_repository.dart'; // Pour le type de retour
 
 class GetProductById extends UseCase<Product, GetProductByIdParams> {
   GetProductById(this._repository);
@@ -13,19 +13,15 @@ class GetProductById extends UseCase<Product, GetProductByIdParams> {
   @override
   Future<ApiResponse<Product>> call(
     GetProductByIdParams getProductByIdParams,
-  ) =>
-      _repository.getProductById(getProductByIdParams);
+  ) => _repository.getProductById(getProductByIdParams);
 }
 
 class GetProductByIdParams extends UrlParams {
-  GetProductByIdParams({
-    required String id,
-  }) : super(
-          urlParams: [
-            id,
-          ].whereType<String>().toList(),
-          // paginationPageIndex: paginationPageIndex,
-        );
+  GetProductByIdParams({required String id})
+    : super(
+        urlParams: [id].whereType<String>().toList(),
+        // paginationPageIndex: paginationPageIndex,
+      );
 }
 
 // class GetProductByIdParams extends UrlParams {

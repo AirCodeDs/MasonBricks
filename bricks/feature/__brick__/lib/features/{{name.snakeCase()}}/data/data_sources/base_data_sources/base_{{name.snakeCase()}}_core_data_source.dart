@@ -1,17 +1,12 @@
-// Project imports:
+// Package imports:
+import 'package:app_core_kit/app_core_kit.dart';
+import 'package:app_services/app_services.dart';
 
-import 'package:{{project_name}}/core/logging/app_log.dart';
-import 'package:{{project_name}}/core/api_response/api_response.dart';
-import 'package:{{project_name}}/core/api_response/api_response_util/api_response_handler.dart';
+// Project imports:
 import 'package:{{project_name}}/core/constants/api_url/api_url.dart';
-import 'package:{{project_name}}/core/constants/request_type/request_type.dart';
-import 'package:{{project_name}}/core/models/metadata/pagination_data_model.dart';
-import 'package:{{project_name}}/core/converters/type_convertor.dart';
-import 'package:{{project_name}}/core/params/params.dart';
 import 'package:{{project_name}}/features/{{name.snakeCase()}}/data/models/{{name.snakeCase()}}_model.dart';
 import 'package:{{project_name}}/features/{{name.snakeCase()}}/data/mappers/{{name.snakeCase()}}_mapper.dart';
 import 'package:{{project_name}}/features/{{name.snakeCase()}}/data/contracts/{{name.snakeCase()}}_data_source.dart';
-import 'package:{{project_name}}/core/interfaces/api_client.dart';
 import 'package:{{project_name}}/features/{{name.snakeCase()}}/domain/entities/{{name.snakeCase()}}.dart';
 
 class Base{{name.pascalCase()}}CoreDataSource

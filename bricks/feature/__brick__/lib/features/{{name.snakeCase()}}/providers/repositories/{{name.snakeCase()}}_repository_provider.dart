@@ -3,9 +3,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 // Project imports:
-import 'package:{{project_name}}/core/providers/flavor/app_flavor_provider.dart';
+import 'package:app_core_kit/app_core_kit.dart';
 import 'package:{{project_name}}/features/{{name.snakeCase()}}/providers/repositories/{{name.snakeCase()}}_mock_repository_provider.dart';
-import 'package:{{project_name}}/features/{{name.snakeCase()}}/providers/repositories/{{name.snakeCase()}}_remote_repository_provider.dart';
+import 'package:{{project_name}}/features/{{name.snakeCase()}}/providers/repositories/{{name.snakeCase()}}_http_rest_repository_provider.dart';
 import 'package:{{project_name}}/features/{{name.snakeCase()}}/domain/repositories/{{name.snakeCase()}}_repository.dart';
 
 part '{{name.snakeCase()}}_repository_provider.g.dart';
@@ -16,7 +16,7 @@ part '{{name.snakeCase()}}_repository_provider.g.dart';
   if (isMockFlavor) {
     return ref.read({{name.camelCase()}}MockRepositoryProvider);
   }
-  return ref.read({{name.camelCase()}}RemoteRepositoryProvider);
+  return ref.read({{name.camelCase()}}HttpRestRepositoryProvider);
 }
 
 

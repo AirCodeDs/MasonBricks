@@ -1,18 +1,16 @@
+// Package imports:
+import 'package:app_core_kit/app_core_kit.dart';
+
 // Project imports:
-import 'package:urban_transport/core/api_response/api_response.dart';
-import 'package:urban_transport/core/params/params.dart';
-import 'package:urban_transport/core/interfaces/use_case.dart';
-import 'package:urban_transport/features/product/domain/entities/product.dart';
-import 'package:urban_transport/features/product/domain/repositories/product_repository.dart';
+import 'package:hbh_connect/features/product/domain/entities/product.dart';
+import 'package:hbh_connect/features/product/domain/repositories/product_repository.dart';
 
 class UpdateProduct extends UseCase<Product, UpdateProductParams> {
   UpdateProduct(this._repository);
   final ProductRepository _repository;
 
   @override
-  Future<ApiResponse<Product>> call(
-    UpdateProductParams updateProductParams,
-  ) =>
+  Future<ApiResponse<Product>> call(UpdateProductParams updateProductParams) =>
       _repository.updateProduct(updateProductParams);
 }
 
@@ -24,14 +22,12 @@ class UpdateProductParams extends UrlAndFieldParams {
     required String category,
     required double price,
   }) : super(
-          urlParams: [
-            id,
-          ],
-          fieldParams: {
-            'name': name,
-            'description': description,
-            'category': category,
-            'price': price,
-          },
-        );
+         urlParams: [id],
+         fieldParams: {
+           'name': name,
+           'description': description,
+           'category': category,
+           'price': price,
+         },
+       );
 }

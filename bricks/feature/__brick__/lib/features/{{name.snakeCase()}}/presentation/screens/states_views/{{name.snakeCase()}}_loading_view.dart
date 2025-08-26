@@ -1,8 +1,8 @@
-import 'package:app_ui/app_ui.dart';
+import 'package:app_ui_kit/app_ui_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
-import 'package:{{project_name}}/features/{{name.snakeCase()}}/presentation/providers/state/{{name.snakeCase()}}_state.dart';
+import 'package:{{project_name}}/features/{{name.snakeCase()}}/application/state/{{name.snakeCase()}}_state.dart';
 import 'package:{{project_name}}/widgets/spaced_widgets/spaced_column.dart';
 
 class {{name.pascalCase()}}LoadingView extends StatelessWidget {

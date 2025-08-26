@@ -1,8 +1,9 @@
 // ignore_for_file: one_member_abstracts
 
-import 'package:{{project_name}}/core/api_response/api_response.dart';
-import 'package:{{project_name}}/core/models/metadata/pagination_data_model.dart';
-import 'package:{{project_name}}/core/params/params.dart';
+// Package imports:
+import 'package:app_core_kit/app_core_kit.dart';
+
+// Project imports:
 import 'package:{{project_name}}/features/{{name.snakeCase()}}/domain/entities/{{name.snakeCase()}}.dart';
 
 abstract class {{name.pascalCase()}}ReaderDataSource {

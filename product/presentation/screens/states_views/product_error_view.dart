@@ -1,25 +1,26 @@
-import 'package:app_ui/app_ui.dart';
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
+import 'package:app_widgets_kit/app_widgets_kit.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:urban_transport/features/product/presentation/providers/state/product_state.dart';
-import 'package:urban_transport/features/product/presentation/providers/state/product_state_extension.dart';
+
+// Project imports:
+import 'package:hbh_connect/features/product/application/state/product_state.dart';
+import 'package:hbh_connect/features/product/application/state/product_state_extension.dart';
 
 class ProductErrorView extends StatelessWidget {
-  const ProductErrorView({
-    required this.state,
-    required this.ref,
-    super.key,
-  });
+  const ProductErrorView({required this.state, required this.ref, super.key});
   final ProductState state;
   final WidgetRef ref;
 
   @override
   Widget build(BuildContext context) => Expanded(
-        child: Center(
-          child: AppText(
-            state.errorFetchProducts.toString(),
-            textAlign: TextAlign.center,
-          ).padding(),
-        ),
-      );
+    child: Center(
+      child: AppText(
+        state.errorFetchProducts.toString(),
+        textAlign: TextAlign.center,
+      ).padding(),
+    ),
+  );
 }

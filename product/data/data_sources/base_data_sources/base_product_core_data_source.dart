@@ -1,18 +1,15 @@
 // Project imports:
 
-import 'package:urban_transport/core/logging/app_log.dart';
-import 'package:urban_transport/core/api_response/api_response.dart';
-import 'package:urban_transport/core/api_response/api_response_util/api_response_handler.dart';
-import 'package:urban_transport/core/constants/api_url/api_url.dart';
-import 'package:urban_transport/core/constants/request_type/request_type.dart';
-import 'package:urban_transport/core/models/metadata/pagination_data_model.dart';
-import 'package:urban_transport/core/converters/type_convertor.dart';
-import 'package:urban_transport/core/params/params.dart';
-import 'package:urban_transport/features/product/data/models/product_model.dart';
-import 'package:urban_transport/features/product/data/mappers/product_mapper.dart';
-import 'package:urban_transport/features/product/data/contracts/product_data_source.dart';
-import 'package:urban_transport/core/interfaces/api_client.dart';
-import 'package:urban_transport/features/product/domain/entities/product.dart';
+// Package imports:
+import 'package:app_core_kit/app_core_kit.dart';
+import 'package:app_services/app_services.dart';
+
+// Project imports:
+import 'package:hbh_connect/core/constants/api_url/api_url.dart';
+import 'package:hbh_connect/features/product/data/contracts/product_data_source.dart';
+import 'package:hbh_connect/features/product/data/mappers/product_mapper.dart';
+import 'package:hbh_connect/features/product/data/models/product_model.dart';
+import 'package:hbh_connect/features/product/domain/entities/product.dart';
 
 class BaseProductCoreDataSource
     with Loggable, ApiResponseHandlerMixin
@@ -70,17 +67,16 @@ class BaseProductCoreDataSource
             .map(ProductModel.fromJson)
             .toList();
         final items = const ProductMapper().toEntityList(models);
-        final meta =
-            TypeConvertor().convertToMapStringDynamic(map['pagination']);
+        final meta = TypeConvertor().convertToMapStringDynamic(
+          map['pagination'],
+        );
         return PaginationDataModel<List<Product>>.fromJson(meta, items);
       },
     );
   }
 
   @override
-  Future<ApiResponse<Product>> getProductById(
-    UrlParams urlParams,
-  ) async {
+  Future<ApiResponse<Product>> getProductById(UrlParams urlParams) async {
     final response = await apiClient.request(
       path: ApiUrl.product.byId(urlParams.params.first),
       requestType: RequestType.get,
@@ -100,9 +96,6 @@ class BaseProductCoreDataSource
       requestType: RequestType.delete,
     );
 
-    return handleApiResponse<void>(
-      response: response,
-      onSuccess: (_) {},
-    );
+    return handleApiResponse<void>(response: response, onSuccess: (_) {});
   }
 }

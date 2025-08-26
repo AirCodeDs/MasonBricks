@@ -1,68 +1,42 @@
 // Package imports:
 // ignore_for_file: unused_import
 
+// Dart imports:
 import 'dart:async';
 
+// Package imports:
+import 'package:app_core_kit/app_core_kit.dart';
 import 'package:dartz/dartz.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:urban_transport/core/providers/flavor/app_flavor_provider.dart';
-import 'package:urban_transport/config/flavors/app_flavors.dart';
 
 // Project imports:
-import 'package:urban_transport/core/api_response/api_response.dart';
-import 'package:urban_transport/core/errors/failure.dart';
-import 'package:urban_transport/core/errors/failure_message_resolver.dart';
-import 'package:urban_transport/core/models/metadata/pagination_data_model.dart';
-import 'package:urban_transport/core/providers/network/network_info_provider.dart';
-import 'package:urban_transport/core/params/params.dart';
-import 'package:urban_transport/features/product/presentation/providers/state/product_state_extension.dart';
-import 'package:urban_transport/features/product/providers/repositories/product_mock_repository_provider.dart';
-import 'package:urban_transport/features/product/providers/repositories/product_remote_repository_provider.dart';
-import 'package:urban_transport/features/product/providers/repositories/product_sync_repository_provider.dart';
-import 'package:urban_transport/features/product/data/repositories/product_sync_repository.dart';
-import 'package:urban_transport/features/product/domain/entities/product.dart';
-import 'package:urban_transport/features/product/domain/repositories/product_repository.dart'; // Typo here, should be .dart
-import 'package:urban_transport/features/product/Application/use_cases/add_product.dart';
-import 'package:urban_transport/features/product/Application/use_cases/delete_product.dart';
-import 'package:urban_transport/features/product/Application/use_cases/get_all_products.dart';
-import 'package:urban_transport/features/product/Application/use_cases/get_product_by_id.dart';
-import 'package:urban_transport/features/product/Application/use_cases/sync_products.dart';
-import 'package:urban_transport/features/product/Application/use_cases/update_product.dart';
-import 'package:urban_transport/features/product/presentation/providers/state/product_state.dart';
-import 'package:urban_transport/features/product/presentation/providers/notifier/commands/add_product_command.dart';
-import 'package:urban_transport/features/product/presentation/providers/notifier/commands/update_product_command.dart';
-import 'package:urban_transport/features/product/presentation/providers/notifier/commands/delete_product_command.dart';
-import 'package:urban_transport/features/product/presentation/providers/notifier/commands/get_product_by_id_command.dart';
-import 'package:urban_transport/features/product/presentation/providers/notifier/commands/fetch_products_command.dart';
-import 'package:urban_transport/features/product/presentation/providers/notifier/commands/sync_products_command.dart';
-import 'package:urban_transport/features/product/presentation/providers/notifier/context/product_notifier_context.dart';
-import 'package:urban_transport/features/product/providers/repositories/product_repository_provider.dart';
+import 'package:hbh_connect/features/product/application/commands/add_product_command.dart';
+import 'package:hbh_connect/features/product/application/commands/delete_product_command.dart';
+import 'package:hbh_connect/features/product/application/commands/fetch_products_command.dart';
+import 'package:hbh_connect/features/product/application/commands/get_product_by_id_command.dart';
+import 'package:hbh_connect/features/product/application/commands/sync_products_command.dart';
+import 'package:hbh_connect/features/product/application/commands/update_product_command.dart';
+import 'package:hbh_connect/features/product/application/notifier_context/product_notifier_context.dart';
+import 'package:hbh_connect/features/product/application/state/product_state.dart';
+import 'package:hbh_connect/features/product/application/state/product_state_extension.dart';
+import 'package:hbh_connect/features/product/domain/entities/product.dart';
+import 'package:hbh_connect/features/product/providers/use_cases/add_product_provider.dart';
+import 'package:hbh_connect/features/product/providers/use_cases/delete_product_provider.dart';
+import 'package:hbh_connect/features/product/providers/use_cases/get_all_products_provider.dart';
+import 'package:hbh_connect/features/product/providers/use_cases/get_product_by_id_provider.dart';
+import 'package:hbh_connect/features/product/providers/use_cases/sync_products_provider.dart';
+import 'package:hbh_connect/features/product/providers/use_cases/update_product_provider.dart';
+
+// Project imports:
 
 part 'product_notifier.g.dart';
 
 @riverpod
 class ProductNotifier extends _$ProductNotifier {
-  late final AddProduct _addProduct;
-  late final UpdateProduct _updateProduct;
-  late final DeleteProduct _deleteProduct;
-  late final GetAllProducts _getAllProducts;
-  late final GetProductById _getProductById;
-  late final SyncProducts _syncProducts;
-  late final GetAllProducts _getSyncProducts;
-
-  PaginationDataModel<List<Product>> _paginationData;
+  PaginationDataModel<List<Product>>? _paginationData;
 
   @override
   ProductState build() {
-    final productRepository = ref.read(productRepositoryProvider);
-    final syncRespository = ref.read(productSyncRepositoryProvider);
-    _addProduct = AddProduct(productRepository);
-    _updateProduct = UpdateProduct(productRepository);
-    _deleteProduct = DeleteProduct(productRepository);
-    _getAllProducts = GetAllProducts(productRepository);
-    _getSyncProducts = GetAllProducts(syncRespository);
-    _getProductById = GetProductById(productRepository);
-    _syncProducts = SyncProducts(syncRespository);
     unawaited(fetchProducts());
     return const ProductState();
   }
@@ -70,9 +44,13 @@ class ProductNotifier extends _$ProductNotifier {
   Future<void> fetchProducts() async {
     final isConnected = await ref.read(networkInfoProvider).isConnected;
     final context = _buildActionContext();
+    final getAllProductsUseCase = isConnected
+        ? ref.read(getAllProductsProvider)
+        : ref.read(getAllSyncProductsProvider);
+
     await FetchProductsCommand(
       context: context,
-      getAllProducts: isConnected ? _getAllProducts : _getSyncProducts,
+      getAllProducts: getAllProductsUseCase,
       paginationData: _paginationData,
       updatePagination: (data) => _paginationData = data,
     ).execute();
@@ -80,45 +58,57 @@ class ProductNotifier extends _$ProductNotifier {
 
   Future<void> addProduct(AddProductParams addProductParams) async {
     final context = _buildActionContext();
+    final addProductUseCase = ref.read(addProductProvider);
+
     await AddProductCommand(
       context: context,
-      addProduct: _addProduct,
+      addProduct: addProductUseCase,
       params: addProductParams,
     ).execute();
   }
 
   Future<void> updateProduct(UpdateProductParams updateProductParams) async {
     final context = _buildActionContext();
+    final updateProductUseCase = ref.read(updateProductProvider);
+
     await UpdateProductCommand(
       context: context,
-      updateProduct: _updateProduct,
+      updateProduct: updateProductUseCase,
       params: updateProductParams,
     ).execute();
   }
 
   Future<void> getProductById(GetProductByIdParams getProductByIdParams) async {
     final context = _buildActionContext();
+    final getProductByIdUseCase = ref.read(getProductByIdProvider);
+
     await GetProductByIdCommand(
       context: context,
-      getProductById: _getProductById,
+      getProductById: getProductByIdUseCase,
       params: getProductByIdParams,
     ).execute();
   }
 
   Future<void> deleteProduct(DeleteProductParams deleteProductParams) async {
     final context = _buildActionContext();
+    final deleteProductUseCase = ref.read(deleteProductProvider);
+
     await DeleteProductCommand(
       context: context,
-      deleteProduct: _deleteProduct,
+      deleteProduct: deleteProductUseCase,
       params: deleteProductParams,
     ).execute();
   }
 
   void syncProducts() {
     final products = state.products;
+    final syncProductsUseCase = ref.read(syncProductsProvider);
+
     unawaited(
-      SyncProductsCommand(products: products, syncProducts: _syncProducts)
-          .execute(),
+      SyncProductsCommand(
+        products: products,
+        syncProducts: syncProductsUseCase,
+      ).execute(),
     );
   }
 
@@ -128,15 +118,15 @@ class ProductNotifier extends _$ProductNotifier {
   }
 
   ProductNotifierContext _buildActionContext() => ProductNotifierContext(
-        currentState: state,
-        ref: ref,
-        onNewState: (newState) async {
-          state = newState;
-          final isConnected = await ref.read(networkInfoProvider).isConnected;
+    currentState: state,
+    ref: ref,
+    onNewState: (newState) async {
+      state = newState;
+      final isConnected = await ref.read(networkInfoProvider).isConnected;
 
-          if (isConnected) {
-            syncProducts();
-          }
-        },
-      );
+      if (isConnected) {
+        syncProducts();
+      }
+    },
+  );
 }

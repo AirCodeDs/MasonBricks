@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:{{project_name}}/features/{{name.snakeCase()}}/presentation/providers/state/{{name.snakeCase()}}_state.dart';
+import 'package:{{project_name}}/features/{{name.snakeCase()}}/application/state/{{name.snakeCase()}}_state.dart';
 
 class Empty{{name.pascalCase()}}View extends StatelessWidget {
   const Empty{{name.pascalCase()}}View({required this.state, super.key});
