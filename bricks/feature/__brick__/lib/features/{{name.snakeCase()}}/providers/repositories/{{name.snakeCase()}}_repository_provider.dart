@@ -4,19 +4,17 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 // Project imports:
-import 'package:{{project_name}}/features/{{name.snakeCase()}}/domain/repositories/{{name.snakeCase()}}_repository.dart';
-import 'package:{{project_name}}/features/{{name.snakeCase()}}/providers/repositories/{{name.snakeCase()}}_mock_repository_provider.dart';
-import 'package:{{project_name}}/features/{{name.snakeCase()}}/providers/repositories/{{name.snakeCase()}}_http_rest_repository_provider.dart';
+import 'package:{{project_name.snakeCase()}}/features/{{name.snakeCase()}}/domain/repositories/{{name.snakeCase()}}_repository.dart';
+import 'package:{{project_name.snakeCase()}}/features/{{name.snakeCase()}}/providers/repositories/{{name.snakeCase()}}_mock_repository_Provider.dart';
+import 'package:{{project_name.snakeCase()}}/features/{{name.snakeCase()}}/providers/repositories/{{name.snakeCase()}}_http_rest_repository_Provider.dart';
 
-part '{{name.snakeCase()}}_repository_provider.g.dart';
+part 'product_repository_Provider.g.dart';
 
 @riverpod
-{{name.pascalCase()}}Repository {{name.camelCase()}}Repository(Ref ref) {
+{{name.pascalCase()}}Repository {{name.pascalCase()}}Repository(Ref ref) {
   final isMockFlavor = ref.read(isMockFlavorProvider);
   if (isMockFlavor) {
-    return ref.read({{name.camelCase()}}MockRepositoryProvider);
+    return ref.read({{name.pascalCase()}}MockRepositoryProvider);
   }
-  return ref.read({{name.camelCase()}}HttpRestRepositoryProvider);
+  return ref.read({{name.pascalCase()}}HttpRestRepositoryProvider);
 }
-
-

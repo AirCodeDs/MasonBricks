@@ -1,9 +1,10 @@
+// Package imports:
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-part '{{name.snakeCase()}}_form_provider.g.dart';
+part 'product_form_Provider.g.dart';
 
 @riverpod
-class {{name.pascalCase()}}FormProvider extends _${{name.pascalCase()}}FormProvider {
+class ProductFormProvider extends _$ProductFormProvider {
   @override
   Map<String, dynamic> build() => {
         'name': '',
@@ -23,5 +24,3 @@ class {{name.pascalCase()}}FormProvider extends _${{name.pascalCase()}}FormProvi
     };
   }
 }
-
-

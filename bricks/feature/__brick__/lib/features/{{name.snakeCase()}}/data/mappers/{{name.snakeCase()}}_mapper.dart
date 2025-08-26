@@ -1,11 +1,11 @@
 // Project imports:
-import 'package:{{project_name}}/features/{{name.snakeCase()}}/data/models/{{name.snakeCase()}}_model.dart';
-import 'package:{{project_name}}/features/{{name.snakeCase()}}/domain/entities/{{name.snakeCase()}}.dart';
+import 'package:{{project_name.snakeCase()}}/features/{{name.snakeCase()}}/data/models/{{name.snakeCase()}}_model.dart';
+import 'package:{{project_name.snakeCase()}}/features/{{name.snakeCase()}}/domain/entities/{{name.snakeCase()}}.dart';
 
 class {{name.pascalCase()}}Mapper {
   const {{name.pascalCase()}}Mapper();
 
-  {{name.pascalCase()}}Model toModel({{name.pascalCase()}} entity) => {{name.pascalCase()}}Model(
+  {{name.pascalCase()}}Model toModel({{name.snakeCase()}} entity) => {{name.pascalCase()}}Model(
     id: entity.id,
     name: entity.name,
     description: entity.description,
@@ -13,7 +13,7 @@ class {{name.pascalCase()}}Mapper {
     price: entity.price,
   );
 
-  {{name.pascalCase()}} toEntity({{name.pascalCase()}}Model model) => {{name.pascalCase()}}(
+  {{name.snakeCase()}} toEntity({{name.pascalCase()}}Model model) => {{name.snakeCase()}}(
     id: model.id,
     name: model.name,
     description: model.description,
@@ -21,11 +21,9 @@ class {{name.pascalCase()}}Mapper {
     price: model.price,
   );
 
-  List<{{name.pascalCase()}}Model> toModelList(List<{{name.pascalCase()}}> entities) =>
+  List<{{name.pascalCase()}}Model> toModelList(List<{{name.snakeCase()}}> entities) =>
       entities.map(toModel).toList();
 
-  List<{{name.pascalCase()}}> toEntityList(List<{{name.pascalCase()}}Model> models) =>
+  List<{{name.snakeCase()}}> toEntityList(List<{{name.pascalCase()}}Model> models) =>
       models.map(toEntity).toList();
 }
-
-

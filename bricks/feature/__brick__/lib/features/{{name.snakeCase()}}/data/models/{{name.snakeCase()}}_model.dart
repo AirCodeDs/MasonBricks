@@ -1,3 +1,4 @@
+// Package imports:
 // ignore_for_file: avoid_print, inference_failure_on_untyped_parameter
 
 // Package imports:
@@ -6,8 +7,8 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 // Project imports:
 
-part '{{name.snakeCase()}}_model.freezed.dart';
-part '{{name.snakeCase()}}_model.g.dart';
+part 'product_model.freezed.dart';
+part 'product_model.g.dart';
 
 @freezed
 abstract class {{name.pascalCase()}}Model with _${{name.pascalCase()}}Model {

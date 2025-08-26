@@ -1,10 +1,12 @@
+// Package imports:
 import 'package:app_core_kit/app_core_kit.dart';
 import 'package:app_services/app_services.dart';
-import 'package:{{project_name}}/features/{{name.snakeCase()}}/data/mappers/{{name.snakeCase()}}_mapper.dart';
-import 'package:{{project_name}}/features/{{name.snakeCase()}}/data/models/{{name.snakeCase()}}_model.dart';
-import 'package:{{project_name}}/features/{{name.snakeCase()}}/data/contracts/{{name.snakeCase()}}_data_source.dart';
-import 'package:{{project_name}}/features/{{name.snakeCase()}}/domain/entities/{{name.snakeCase()}}.dart';
-import 'package:{{project_name}}/services/api_client/sync_api_client/sync_api_client.dart';
+
+// Project imports:
+import 'package:{{project_name.snakeCase()}}/features/{{name.snakeCase()}}/data/contracts/{{name.snakeCase()}}_data_source.dart';
+import 'package:{{project_name.snakeCase()}}/features/{{name.snakeCase()}}/data/mappers/{{name.snakeCase()}}_mapper.dart';
+import 'package:{{project_name.snakeCase()}}/features/{{name.snakeCase()}}/data/models/{{name.snakeCase()}}_model.dart';
+import 'package:{{project_name.snakeCase()}}/features/{{name.snakeCase()}}/domain/entities/{{name.snakeCase()}}.dart';
 
 class Base{{name.pascalCase()}}SyncDataSource
     with Loggable, ApiResponseHandlerMixin
@@ -12,25 +14,25 @@ class Base{{name.pascalCase()}}SyncDataSource
   Base{{name.pascalCase()}}SyncDataSource({required this.syncApiClient});
   final SyncApiClient<String, dynamic> syncApiClient;
 
-  static const String boxKey = '{{name.snakeCase()}}s';
+  static const String productBoxKey = '{{name.snakeCase()}}s';
 
   @override
-  Future<ApiResponse<Page<List<{{name.pascalCase()}}>>>> getAll{{name.pascalCase()}}s(
+  Future<ApiResponse<Page<List<{{name.snakeCase()}}>>>> GetAll{{name.pascalCase()}}s(
     NoParams noParams,
   ) async {
     final response = await syncApiClient.request(
-      path: boxKey,
+      path: productBoxKey,
       requestType: RequestType.get,
     );
 
-    return handleApiResponse<Page<List<{{name.pascalCase()}}>>>(
+    return handleApiResponse<Page<List<{{name.snakeCase()}}>>>(
       response: response,
       onSuccess: (rawData) {
         final list = TypeConvertor().convertUnknownToListOfMaps(rawData);
         final models = list.map({{name.pascalCase()}}Model.fromJson).toList();
         final entities = const {{name.pascalCase()}}Mapper().toEntityList(models);
 
-        return PaginationDataModel<List<{{name.pascalCase()}}>>(
+        return Page<List<{{name.snakeCase()}}>>(
           totalCount: entities.length,
           currentPage: 1,
           perPage: entities.length,
@@ -42,18 +44,14 @@ class Base{{name.pascalCase()}}SyncDataSource
   }
 
   @override
-  Future<ApiResponse<void>> sync{{name.pascalCase()}}s(
-    List<{{name.pascalCase()}}> items,
-  ) async {
-    final models = const {{name.pascalCase()}}Mapper().toModelList(items);
-    final itemsAsList = models.map((el) => el.toJson()).toList();
+  Future<ApiResponse<void>> Sync{{name.pascalCase()}}s(List<{{name.snakeCase()}}> {{name.snakeCase()}}s) async {
+    final {{name.pascalCase()}}Models = const {{name.pascalCase()}}Mapper().toModelList({{name.snakeCase()}}s);
+    final productsAsList = {{name.pascalCase()}}Models.map((el) => el.toJson()).toList();
     try {
       await syncApiClient.request(
-        path: boxKey,
+        path: productBoxKey,
         requestType: RequestType.post,
-        body: {
-          'data': itemsAsList,
-        },
+        body: {'data': productsAsList},
         isListMap: true,
         addAll: true,
       );
@@ -63,5 +61,3 @@ class Base{{name.pascalCase()}}SyncDataSource
     }
   }
 }
-
-

@@ -1,18 +1,17 @@
 // Package imports:
 import 'package:app_core_kit/app_core_kit.dart';
+
 // Project imports:
-import 'package:{{project_name}}/features/{{name.snakeCase()}}/domain/entities/{{name.snakeCase()}}.dart';
-import 'package:{{project_name}}/features/{{name.snakeCase()}}/domain/repositories/{{name.snakeCase()}}_repository.dart';
+import 'package:{{project_name.snakeCase()}}/features/{{name.snakeCase()}}/domain/entities/{{name.snakeCase()}}.dart';
+import 'package:{{project_name.snakeCase()}}/features/{{name.snakeCase()}}/domain/repositories/{{name.snakeCase()}}_repository.dart';
 
 class Add{{name.pascalCase()}} implements UseCase<{{name.pascalCase()}}, Add{{name.pascalCase()}}Params> {
   Add{{name.pascalCase()}}(this._repository);
   final {{name.pascalCase()}}Repository _repository;
 
   @override
-  Future<ApiResponse<{{name.pascalCase()}}>> call(
-    Add{{name.pascalCase()}}Params params,
-  ) =>
-      _repository.add{{name.pascalCase()}}(params);
+  Future<ApiResponse<{{name.pascalCase()}}>> call(Add{{name.pascalCase()}}Params addParams) =>
+      _repository.add{{name.pascalCase()}}(addParams);
 }
 
 class Add{{name.pascalCase()}}Params extends FieldParams {
@@ -22,13 +21,25 @@ class Add{{name.pascalCase()}}Params extends FieldParams {
     required String category,
     required double price,
   }) : super(
-          fieldParams: {
-            'name': name,
-            'description': description,
-            'category': category,
-            'price': price,
-          },
-        );
+         fieldParams: {
+           'name': name,
+           'description': description,
+           'category': category,
+           'price': price,
+         },
+       );
 }
 
-
+// class Add{{name.pascalCase()}}Params extends FieldParams {
+//   Add{{name.pascalCase()}}Params({
+//     required String fieldParam1,
+//     required String fieldParam2,
+//     String? fieldParam3,
+//   }) : super(
+//           fieldParams: {
+//             'fieldParam1': fieldParam1,
+//             'fieldParam2': fieldParam2,
+//             if (fieldParam3 != null) 'fieldParam3': fieldParam3,
+//           },
+//         );
+// }

@@ -1,5 +1,8 @@
+// Package imports:
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:{{project_name}}/features/{{name.snakeCase()}}/application/state/{{name.snakeCase()}}_state.dart';
+
+// Project imports:
+import 'package:{{project_name.snakeCase()}}/features/{{name.snakeCase()}}/application/state/{{name.snakeCase()}}_state.dart';
 
 class {{name.pascalCase()}}NotifierContext {
   {{name.pascalCase()}}NotifierContext({
@@ -11,6 +14,3 @@ class {{name.pascalCase()}}NotifierContext {
   final Ref ref;
   final void Function({{name.pascalCase()}}State) onNewState;
 }
-
-
-

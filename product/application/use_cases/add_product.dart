@@ -1,0 +1,45 @@
+// Package imports:
+import 'package:app_core_kit/app_core_kit.dart';
+
+// Project imports:
+import 'package:hbh_connect/features/product/domain/entities/product.dart';
+import 'package:hbh_connect/features/product/domain/repositories/product_repository.dart';
+
+class AddProduct implements UseCase<Product, AddProductParams> {
+  AddProduct(this._repository);
+  final ProductRepository _repository;
+
+  @override
+  Future<ApiResponse<Product>> call(AddProductParams addProductParams) =>
+      _repository.addProduct(addProductParams);
+}
+
+class AddProductParams extends FieldParams {
+  AddProductParams({
+    required String name,
+    required String description,
+    required String category,
+    required double price,
+  }) : super(
+         fieldParams: {
+           'name': name,
+           'description': description,
+           'category': category,
+           'price': price,
+         },
+       );
+}
+
+// class AddProductParams extends FieldParams {
+//   AddProductParams({
+//     required String fieldParam1,
+//     required String fieldParam2,
+//     String? fieldParam3,
+//   }) : super(
+//           fieldParams: {
+//             'fieldParam1': fieldParam1,
+//             'fieldParam2': fieldParam2,
+//             if (fieldParam3 != null) 'fieldParam3': fieldParam3,
+//           },
+//         );
+// }

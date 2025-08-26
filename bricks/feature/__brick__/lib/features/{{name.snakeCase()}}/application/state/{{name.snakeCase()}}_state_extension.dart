@@ -1,115 +1,124 @@
-import 'package:{{project_name}}/features/{{name.snakeCase()}}/domain/entities/{{name.snakeCase()}}.dart';
-import 'package:{{project_name}}/features/{{name.snakeCase()}}/application/state/{{name.snakeCase()}}_state.dart';
+// Project imports:
+import 'package:{{project_name.snakeCase()}}/features/{{name.snakeCase()}}/application/state/{{name.snakeCase()}}_state.dart';
+import 'package:{{project_name.snakeCase()}}/features/{{name.snakeCase()}}/domain/entities/{{name.snakeCase()}}.dart';
 
 extension {{name.pascalCase()}}StateX on {{name.pascalCase()}}State {
   {{name.pascalCase()}}State withLoading({{name.pascalCase()}}Operation op) => copyWith(
-        operationStatuses: {
-          ...operationStatuses,
-          op: OperationStatus.loading,
-        },
-        errors: {
-          ...errors,
-          op: null,
-        },
-      );
+    operationStatuses: {...operationStatuses, op: OperationStatus.loading},
+    errors: {...errors, op: null},
+  );
 
-  {{name.pascalCase()}}State withSuccess({{name.pascalCase()}}Operation op, {List<{{name.pascalCase()}}>? items}) =>
+  {{name.pascalCase()}}State withSuccess({{name.pascalCase()}}Operation op, {List<{{name.snakeCase()}}>? {{name.snakeCase()}}s}) =>
       copyWith(
-        {{name.snakeCase()}}s: items ?? this.{{name.snakeCase()}}s,
-        operationStatuses: {
-          ...operationStatuses,
-          op: OperationStatus.success,
-        },
-        errors: {
-          ...errors,
-          op: null,
-        },
+        {{name.snakeCase()}}s: {{name.snakeCase()}}s ?? this.{{name.snakeCase()}}s,
+        operationStatuses: {...operationStatuses, op: OperationStatus.success},
+        errors: {...errors, op: null},
       );
 
   {{name.pascalCase()}}State withError({{name.pascalCase()}}Operation op, String message) => copyWith(
-        operationStatuses: {
-          ...operationStatuses,
-          op: OperationStatus.error,
-        },
-        errors: {
-          ...errors,
-          op: message,
-        },
-      );
+    operationStatuses: {...operationStatuses, op: OperationStatus.error},
+    errors: {...errors, op: message},
+  );
 
   {{name.pascalCase()}}State withIdle({{name.pascalCase()}}Operation op) => copyWith(
-        operationStatuses: {
-          ...operationStatuses,
-          op: OperationStatus.idle,
-        },
-        errors: {
-          ...errors,
-          op: null,
-        },
-      );
+    operationStatuses: {...operationStatuses, op: OperationStatus.idle},
+    errors: {...errors, op: null},
+  );
 
+  // Convenience getters to check the status of an operation
   bool isLoading({{name.pascalCase()}}Operation op) =>
       operationStatuses[op] == OperationStatus.loading;
+
   bool isSuccess({{name.pascalCase()}}Operation op) =>
       operationStatuses[op] == OperationStatus.success;
+
   bool isError({{name.pascalCase()}}Operation op) =>
       operationStatuses[op] == OperationStatus.error;
+
   String? errorMessage({{name.pascalCase()}}Operation op) => errors[op];
 }
 
 extension {{name.pascalCase()}}StateFlags on {{name.pascalCase()}}State {
+  // === Add{{name.pascalCase()}} ===
   bool get isLoadingAdd{{name.pascalCase()}} =>
-      operationStatuses[{{name.pascalCase()}}Operation.add{{name.pascalCase()}}] == OperationStatus.loading;
+      operationStatuses[{{name.pascalCase()}}Operation.Add{{name.pascalCase()}}] == OperationStatus.loading;
+
   bool get isSuccessAdd{{name.pascalCase()}} =>
-      operationStatuses[{{name.pascalCase()}}Operation.add{{name.pascalCase()}}] == OperationStatus.success;
+      operationStatuses[{{name.pascalCase()}}Operation.Add{{name.pascalCase()}}] == OperationStatus.success;
+
   bool get isErrorAdd{{name.pascalCase()}} =>
-      operationStatuses[{{name.pascalCase()}}Operation.add{{name.pascalCase()}}] == OperationStatus.error;
-  String? get errorAdd{{name.pascalCase()}} => errors[{{name.pascalCase()}}Operation.add{{name.pascalCase()}}];
+      operationStatuses[{{name.pascalCase()}}Operation.Add{{name.pascalCase()}}] == OperationStatus.error;
 
-  bool get isLoadingFetch{{name.pascalCase()}}s =>
-      operationStatuses[{{name.pascalCase()}}Operation.fetch{{name.pascalCase()}}s] == OperationStatus.loading;
-  bool get isSuccessFetch{{name.pascalCase()}}s =>
-      operationStatuses[{{name.pascalCase()}}Operation.fetch{{name.pascalCase()}}s] == OperationStatus.success;
-  bool get isErrorFetch{{name.pascalCase()}}s =>
-      operationStatuses[{{name.pascalCase()}}Operation.fetch{{name.pascalCase()}}s] == OperationStatus.error;
-  bool get is{{name.pascalCase()}}sEmpty => {{name.snakeCase()}}s.isEmpty;
-  String? get errorFetch{{name.pascalCase()}}s => errors[{{name.pascalCase()}}Operation.fetch{{name.pascalCase()}}s];
+  String? get errorAdd{{name.pascalCase()}} => errors[{{name.pascalCase()}}Operation.Add{{name.pascalCase()}}];
 
+  // === fetch{{name.pascalCase()}}s ===
+  bool get isLoadingfetch{{name.pascalCase()}}s =>
+      operationStatuses[{{name.pascalCase()}}Operation.fetch{{name.pascalCase()}}s] ==
+      OperationStatus.loading;
+
+  bool get isSuccessfetch{{name.pascalCase()}}s =>
+      operationStatuses[{{name.pascalCase()}}Operation.fetch{{name.pascalCase()}}s] ==
+      OperationStatus.success;
+
+  bool get isErrorfetch{{name.pascalCase()}}s =>
+      operationStatuses[{{name.pascalCase()}}Operation.fetch{{name.pascalCase()}}s] ==
+      OperationStatus.error;
+
+  bool get isProductsEmpty => {{name.snakeCase()}}s.isEmpty;
+
+  String? get errorfetch{{name.pascalCase()}}s => errors[{{name.pascalCase()}}Operation.fetch{{name.pascalCase()}}s];
+
+  // === Update{{name.pascalCase()}} ===
   bool get isLoadingUpdate{{name.pascalCase()}} =>
-      operationStatuses[{{name.pascalCase()}}Operation.update{{name.pascalCase()}}] == OperationStatus.loading;
+      operationStatuses[{{name.pascalCase()}}Operation.Update{{name.pascalCase()}}] ==
+      OperationStatus.loading;
+
   bool get isSuccessUpdate{{name.pascalCase()}} =>
-      operationStatuses[{{name.pascalCase()}}Operation.update{{name.pascalCase()}}] == OperationStatus.success;
+      operationStatuses[{{name.pascalCase()}}Operation.Update{{name.pascalCase()}}] ==
+      OperationStatus.success;
+
   bool get isErrorUpdate{{name.pascalCase()}} =>
-      operationStatuses[{{name.pascalCase()}}Operation.update{{name.pascalCase()}}] == OperationStatus.error;
-  String? get errorUpdate{{name.pascalCase()}} => errors[{{name.pascalCase()}}Operation.update{{name.pascalCase()}}];
+      operationStatuses[{{name.pascalCase()}}Operation.Update{{name.pascalCase()}}] ==
+      OperationStatus.error;
 
+  String? get errorUpdate{{name.pascalCase()}} => errors[{{name.pascalCase()}}Operation.Update{{name.pascalCase()}}];
+
+  // === Delete{{name.pascalCase()}} ===
   bool get isLoadingDelete{{name.pascalCase()}} =>
-      operationStatuses[{{name.pascalCase()}}Operation.delete{{name.pascalCase()}}] == OperationStatus.loading;
-  bool get isSuccessDelete{{name.pascalCase()}} =>
-      operationStatuses[{{name.pascalCase()}}Operation.delete{{name.pascalCase()}}] == OperationStatus.success;
-  bool get isErrorDelete{{name.pascalCase()}} =>
-      operationStatuses[{{name.pascalCase()}}Operation.delete{{name.pascalCase()}}] == OperationStatus.error;
-  String? get errorDelete{{name.pascalCase()}} => errors[{{name.pascalCase()}}Operation.delete{{name.pascalCase()}}];
+      operationStatuses[{{name.pascalCase()}}Operation.Delete{{name.pascalCase()}}] ==
+      OperationStatus.loading;
 
+  bool get isSuccessDelete{{name.pascalCase()}} =>
+      operationStatuses[{{name.pascalCase()}}Operation.Delete{{name.pascalCase()}}] ==
+      OperationStatus.success;
+
+  bool get isErrorDelete{{name.pascalCase()}} =>
+      operationStatuses[{{name.pascalCase()}}Operation.Delete{{name.pascalCase()}}] ==
+      OperationStatus.error;
+
+  String? get errorDelete{{name.pascalCase()}} => errors[{{name.pascalCase()}}Operation.Delete{{name.pascalCase()}}];
+
+  // === Get{{name.pascalCase()}}ById ===
   bool get isLoadingGet{{name.pascalCase()}}ById =>
-      operationStatuses[{{name.pascalCase()}}Operation.get{{name.pascalCase()}}ById] == OperationStatus.loading;
+      operationStatuses[{{name.pascalCase()}}Operation.Get{{name.pascalCase()}}ById] ==
+      OperationStatus.loading;
+
   bool get isSuccessGet{{name.pascalCase()}}ById =>
-      operationStatuses[{{name.pascalCase()}}Operation.get{{name.pascalCase()}}ById] == OperationStatus.success;
+      operationStatuses[{{name.pascalCase()}}Operation.Get{{name.pascalCase()}}ById] ==
+      OperationStatus.success;
+
   bool get isErrorGet{{name.pascalCase()}}ById =>
-      operationStatuses[{{name.pascalCase()}}Operation.get{{name.pascalCase()}}ById] == OperationStatus.error;
-  String? get errorGet{{name.pascalCase()}}ById => errors[{{name.pascalCase()}}Operation.get{{name.pascalCase()}}ById];
+      operationStatuses[{{name.pascalCase()}}Operation.Get{{name.pascalCase()}}ById] ==
+      OperationStatus.error;
+
+  String? get errorGet{{name.pascalCase()}}ById => errors[{{name.pascalCase()}}Operation.Get{{name.pascalCase()}}ById];
 
   {{name.pascalCase()}}State clearOperation({{name.pascalCase()}}Operation op) => copyWith(
-        operationStatuses: Map<{{name.pascalCase()}}Operation, OperationStatus>.from(
-          operationStatuses,
-        )..remove(op),
-        errors: Map<{{name.pascalCase()}}Operation, String?>.from(errors)..remove(op),
-      );
+    operationStatuses: Map<{{name.pascalCase()}}Operation, OperationStatus>.from(
+      operationStatuses,
+    )..remove(op),
+    errors: Map<{{name.pascalCase()}}Operation, String?>.from(errors)..remove(op),
+  );
 
-  {{name.pascalCase()}}State withClearedErrors() => copyWith(
-        errors: const {},
-      );
+  {{name.pascalCase()}}State withClearedErrors() => copyWith(errors: const {});
 }
-
-
-

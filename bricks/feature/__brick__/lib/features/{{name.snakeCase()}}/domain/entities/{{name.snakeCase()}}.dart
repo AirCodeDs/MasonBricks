@@ -6,7 +6,6 @@ class {{name.pascalCase()}} {
     required this.category,
     required this.price,
   });
-
   final String id;
   final String name;
   final String description;

@@ -1,13 +1,15 @@
+// Project imports:
+
 // Package imports:
 import 'package:app_core_kit/app_core_kit.dart';
 import 'package:app_services/app_services.dart';
 
 // Project imports:
-import 'package:{{project_name}}/core/constants/api_url/api_url.dart';
-import 'package:{{project_name}}/features/{{name.snakeCase()}}/data/models/{{name.snakeCase()}}_model.dart';
-import 'package:{{project_name}}/features/{{name.snakeCase()}}/data/mappers/{{name.snakeCase()}}_mapper.dart';
-import 'package:{{project_name}}/features/{{name.snakeCase()}}/data/contracts/{{name.snakeCase()}}_data_source.dart';
-import 'package:{{project_name}}/features/{{name.snakeCase()}}/domain/entities/{{name.snakeCase()}}.dart';
+import 'package:{{project_name.snakeCase()}}/core/constants/api_url/api_url.dart';
+import 'package:{{project_name.snakeCase()}}/features/{{name.snakeCase()}}/data/contracts/{{name.snakeCase()}}_data_source.dart';
+import 'package:{{project_name.snakeCase()}}/features/{{name.snakeCase()}}/data/mappers/{{name.snakeCase()}}_mapper.dart';
+import 'package:{{project_name.snakeCase()}}/features/{{name.snakeCase()}}/data/models/{{name.snakeCase()}}_model.dart';
+import 'package:{{project_name.snakeCase()}}/features/{{name.snakeCase()}}/domain/entities/{{name.snakeCase()}}.dart';
 
 class Base{{name.pascalCase()}}CoreDataSource
     with Loggable, ApiResponseHandlerMixin
@@ -16,45 +18,47 @@ class Base{{name.pascalCase()}}CoreDataSource
   final ApiClient apiClient;
 
   @override
-  Future<ApiResponse<{{name.pascalCase()}}>> add{{name.pascalCase()}}(FieldParams fieldParams) async {
+  Future<ApiResponse<{{name.snakeCase()}}>> Add{{name.pascalCase()}}(FieldParams fieldParams) async {
     final response = await apiClient.request(
-      path: ApiUrl.{{name.camelCase()}}.base,
+      path: ApiUrl.{{name.snakeCase()}}.base,
       requestType: RequestType.post,
       body: fieldParams.fieldParams,
     );
 
-    return handleApiResponse<{{name.pascalCase()}}>(
+    return handleApiResponse<{{name.snakeCase()}}>(
       response: response,
-      onSuccess: (raw) => const {{name.pascalCase()}}Mapper().toEntity({{name.pascalCase()}}Model.fromJson(raw)),
+      onSuccess: (raw) =>
+          const {{name.pascalCase()}}Mapper().toEntity({{name.pascalCase()}}Model.fromJson(raw)),
     );
   }
 
   @override
-  Future<ApiResponse<{{name.pascalCase()}}>> update{{name.pascalCase()}}(
+  Future<ApiResponse<{{name.snakeCase()}}>> Update{{name.pascalCase()}}(
     UrlAndFieldParams urlAndFieldParams,
   ) async {
     final response = await apiClient.request(
-      path: ApiUrl.{{name.camelCase()}}.byId(urlAndFieldParams.urlParams.first),
+      path: ApiUrl.{{name.snakeCase()}}.byId(urlAndFieldParams.urlParams.first),
       requestType: RequestType.put,
       body: urlAndFieldParams.fieldParams,
     );
 
-    return handleApiResponse<{{name.pascalCase()}}>(
+    return handleApiResponse<{{name.snakeCase()}}>(
       response: response,
-      onSuccess: (raw) => const {{name.pascalCase()}}Mapper().toEntity({{name.pascalCase()}}Model.fromJson(raw)),
+      onSuccess: (raw) =>
+          const {{name.pascalCase()}}Mapper().toEntity({{name.pascalCase()}}Model.fromJson(raw)),
     );
   }
 
   @override
-  Future<ApiResponse<Page<List<{{name.pascalCase()}}>>>> getAll{{name.pascalCase()}}s(
+  Future<ApiResponse<Page<List<{{name.snakeCase()}}>>>> GetAll{{name.pascalCase()}}s(
     NoParams noParams,
   ) async {
     final response = await apiClient.request(
-      path: ApiUrl.{{name.camelCase()}}.base,
+      path: ApiUrl.{{name.snakeCase()}}.base,
       requestType: RequestType.get,
     );
 
-    return handleApiResponse<Page<List<{{name.pascalCase()}}>>>(
+    return handleApiResponse<Page<List<{{name.snakeCase()}}>>>(
       response: response,
       onSuccess: (rawData) {
         final map = TypeConvertor().convertToMapStringDynamic(rawData);
@@ -63,39 +67,35 @@ class Base{{name.pascalCase()}}CoreDataSource
             .map({{name.pascalCase()}}Model.fromJson)
             .toList();
         final items = const {{name.pascalCase()}}Mapper().toEntityList(models);
-        final meta = TypeConvertor().convertToMapStringDynamic(map['pagination']);
-        return Page<List<{{name.pascalCase()}}>>.fromJson(meta, items);
+        final meta = TypeConvertor().convertToMapStringDynamic(
+          map['pagination'],
+        );
+        return Page<List<{{name.snakeCase()}}>>.fromJson(meta, items);
       },
     );
   }
 
   @override
-  Future<ApiResponse<{{name.pascalCase()}}>> get{{name.pascalCase()}}ById(
-    UrlParams urlParams,
-  ) async {
+  Future<ApiResponse<{{name.snakeCase()}}>> Get{{name.pascalCase()}}ById(UrlParams urlParams) async {
     final response = await apiClient.request(
-      path: ApiUrl.{{name.camelCase()}}.byId(urlParams.urlParams.first),
+      path: ApiUrl.{{name.snakeCase()}}.byId(urlParams.params.first),
       requestType: RequestType.get,
     );
 
-    return handleApiResponse<{{name.pascalCase()}}>(
+    return handleApiResponse<{{name.snakeCase()}}>(
       response: response,
-      onSuccess: (raw) => const {{name.pascalCase()}}Mapper().toEntity({{name.pascalCase()}}Model.fromJson(raw)),
+      onSuccess: (raw) =>
+          const {{name.pascalCase()}}Mapper().toEntity({{name.pascalCase()}}Model.fromJson(raw)),
     );
   }
 
   @override
-  Future<ApiResponse<void>> delete{{name.pascalCase()}}(UrlParams urlParams) async {
+  Future<ApiResponse<void>> Delete{{name.pascalCase()}}(UrlParams urlParams) async {
     final response = await apiClient.request(
-      path: ApiUrl.{{name.camelCase()}}.byId(urlParams.urlParams.first),
+      path: ApiUrl.{{name.snakeCase()}}.byId(urlParams.params.first),
       requestType: RequestType.delete,
     );
 
-    return handleApiResponse<void>(
-      response: response,
-      onSuccess: (_) {},
-    );
+    return handleApiResponse<void>(response: response, onSuccess: (_) {});
   }
 }
-
-
